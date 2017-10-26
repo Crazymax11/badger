@@ -28,6 +28,9 @@ module.exports = function createApp(port, verbose) {
     
     app.post('/:badgeType/:project', (req, res) => {
         const value = req.body.value;
+        if (typeof value === 'undefined') {
+            res.status(400).send('lol kek cheburek');
+        }
         const badgeHandler = types[req.params.badgeType];
         storeBadge(req.params.badgeType, req.params.project, value);
         if (badgeHandler) {
