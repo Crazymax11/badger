@@ -1,0 +1,23 @@
+{
+  "name": "badge-creator",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "command-line-args": "^4.0.7",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "flow-bin": "^0.57.3",
+    "mocha": "^4.0.1",
+    "node-fetch": "^1.7.3",
+    "request": "^2.83.0"
+  }
+}
