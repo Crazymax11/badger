@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --compilers js:babel-core/register test.spec.js spec.js"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -17,7 +17,8 @@
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
-    "yaml": "^0.3.0"
+    "yaml": "^0.3.0",
+    "git-badger-core": "^0.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
@@ -30,7 +31,6 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.3.1",
     "flow-bin": "^0.57.3",
-    "git-badger-core": "^0.1.0",
     "js-yaml": "^3.10.0",
     "lerna": "^2.4.0",
     "mocha": "^4.0.1",

@@ -1,34 +1,43 @@
 import { expect } from 'chai';
-import Store from './leveldownStore.js';
-import fs from 'fs';
-import rimraf from 'rimraf';
+import {
+  storeToMysql,
+  getLastFromMysql,
+  isTableExist,
+  createTable
+} from './index.js';
 
-describe('#leveldownStore', () => {
-  it('should be created', () => {
-    const store = new Store('./test-should-be-created.db');
-    return store.close();
+describe('MysqlStore', () => {
+  it('should check database', () => {
+    expect(isTableExist()).to.equal("SHOW TABLES LIKE 'badges';");
   });
-  it('should store and return value', async () => {
-    const store = new Store('./test-should-store.db');
-    await store.store('test-project', 'test-subject', 'test-status', 123);
-    const result = await store.getLast('test-project', 'test-subject');
-    expect(result).be.deep.equal({
-      status: 'test-status',
-      subject: 'test-subject'
-    });
-    return store.close();
+  it('should should create database', () => {
+    // replaces needed to remove indents in strings;
+    const expected = `CREATE TABLE badges (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        project VARCHAR(30) NOT NULL,
+        subject VARCHAR(30) NOT NULL,
+        status VARCHAR(50) NOT NULL,
+        time TIMESTAMP
+    )`.replace(/\s+/, ' ');
+    expect(createTable().replace(/\s+/, ' ')).to.equal(expected);
   });
-  it('should return none then no status');
-  after(() => {
-    rimraf('./test-should-store.db', err => {
-      if (err) {
-        console.error(err);
-      }
-    });
-    rimraf('./test-should-be-created.db', err => {
-      if (err) {
-        console.error(err);
-      }
-    });
+
+  it('should insert badge', () => {
+    expect(
+      storeToMysql(
+        'test-project',
+        'test-subject',
+        'test-status',
+        Date.UTC(2017, 1)
+      )
+    ).to.equal(
+      "INSERT INTO badges (project, subject, status, time) VALUES ('test-project', 'test-subject', 'test-status', 1485907200000)"
+    );
+  });
+
+  it('should getLast value of badge', () => {
+    expect(getLastFromMysql('test-project', 'test-subject')).to.equal(
+      "SELECT status FROM badges WHERE project = 'test-project' AND subject = 'test-subject' ORDER BY id DESC LIMIT 1"
+    );
   });
 });

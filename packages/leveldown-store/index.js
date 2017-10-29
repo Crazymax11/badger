@@ -2,8 +2,14 @@
 import levelup from 'levelup';
 import leveldown from 'leveldown';
 
-import type { Store, StoreReturn, Time } from './store.types.js';
-import type { Project, Subject, Status } from './types.js';
+import type {
+  Store,
+  StoreReturn,
+  Time,
+  Project,
+  Subject,
+  Status
+} from 'git-badger-core/types.js';
 
 class LeveldownStore implements Store {
   db: any;

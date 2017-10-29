@@ -1,7 +1,6 @@
 import { expect } from 'chai';
-import Store from './leveldownStore.js';
-import fs from 'fs';
 import rimraf from 'rimraf';
+import Store from './index.js';
 
 describe('#leveldownStore', () => {
   it('should be created', () => {

@@ -3,13 +3,20 @@ const chai = require('chai');
 const { expect } = chai;
 const fetch = require('node-fetch');
 
-const TEST_BADGE = 'eslint-errors';
-const TEST_PROJECT_1 = 'test-project-1';
-const server = require('./server.js');
-
 import store from './store.js';
 
-server(1337, store);
+const server = require('./server.js');
+
+const TEST_BADGE = 'eslint-errors';
+const TEST_PROJECT_1 = 'test-project-1';
+
+const badges = {
+  'eslint-errors': require('./templates/eslint-errors.js'),
+  'eslint-warnings': require('./templates/eslint-warnings.js'),
+  'flow-coverage': require('./templates/flow-coverage.js'),
+  'vue-component-decorator': require('./templates/vue-component-decorator.js')
+};
+server(1337, store, badges);
 describe('HTTP interface /:badgeType/:project', () => {
   it('server should be available', () => getBadge(TEST_BADGE, TEST_PROJECT_1));
   it('POST should return 200', () =>
@@ -60,7 +67,7 @@ describe('HTTP interface /:badgeType/:project', () => {
           'eslint-errors',
           'eslint-warnings',
           'flow-coverage',
-          'vue-component'
+          'vue-component-decorator'
         ])
       ));
 });

@@ -3,24 +3,20 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import getLink from './badger.js';
-import { Store } from './types.js';
+import type { Store, BadgeCreator } from './types.js';
 
-const types = {
-  'eslint-errors': require('./templates/eslint-errors'),
-  'eslint-warnings': require('./templates/eslint-warnings'),
-  'flow-coverage': require('./templates/flow-coverage'),
-  'vue-component': require('./templates/vue-component-decorator')
-};
-
-module.exports = function createApp(port: number, store: Store) {
+module.exports = function createApp(
+  port: number,
+  store: Store,
+  typesMap: { [string]: BadgeCreator }
+) {
   const app = express();
   app.use(bodyParser.json());
   app.get('/:badgeType/:project', async (req, res) => {
     const badgeType = req.params.badgeType;
     const project = req.params.project;
-
     const lastValue = await store.getLast(project, badgeType);
-    const badgeHandler = types[badgeType];
+    const badgeHandler = typesMap[badgeType];
     const badgeData = badgeHandler(lastValue);
     const badge = getLink(badgeData);
     return res.send(badge);
@@ -34,17 +30,17 @@ module.exports = function createApp(port: number, store: Store) {
       return res.status(400).send('lol kek cheburek');
     }
 
-    const badgeHandler = types[req.params.badgeType];
+    const badgeHandler = typesMap[req.params.badgeType];
     await store.store(project, badgeType, status, Date.now());
     if (badgeHandler) {
       const meta = badgeHandler(status);
       const badge = getLink(meta);
       return res.send(badge);
     }
-    return res.status(400).json(Object.keys(types));
+    return res.status(400).json(Object.keys(typesMap));
   });
 
-  app.get('/', (req, res) => res.json(Object.keys(types)));
+  app.get('/', (req, res) => res.json(Object.keys(typesMap)));
 
   app.listen(port, err => {
     if (err) {
