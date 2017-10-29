@@ -12,5 +12,5 @@ The main difference from other badge services is configurability. It has built-i
 
 - [ ] Show badge/project status history
 - [ ] Show page with all available badges
-- [ ] Make git-badger package which contains app and depends on git-badger-core
+- [x] Make git-badger package which contains app and depends on git-badger-core
 - [ ] Make Docker image

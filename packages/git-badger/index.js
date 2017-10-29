@@ -3,7 +3,7 @@ import yaml from 'yaml';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
 import MysqlStore from 'git-badger-mysql-store';
-import server from './server.js';
+import server from 'git-badger-core';
 
 const optionDefinitions = [
   { name: 'port', alias: 'p', type: Number },
