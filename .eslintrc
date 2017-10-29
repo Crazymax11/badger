@@ -1,0 +1,25 @@
+{
+    "parser": "babel-eslint",
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:flowtype/recommended",
+        "prettier"
+    ],
+    "plugins": [
+        "import",
+        "flowtype",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": ["error",
+        {
+            "singleQuote": true
+        }],
+        "import/extensions": "off",
+        "no-use-before-define": ["error", { "functions": false }]
+    }
+}

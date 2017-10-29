@@ -1,0 +1,9 @@
+mysql:
+  host: localhost
+  user: badger
+  password: badger
+  db: badger
+
+storeType: mysql
+server:
+  port: 8080
