@@ -1,11 +1,11 @@
 {
-  "name": "git-badger-core",
-  "version": "0.1.1",
+  "name": "git-badger",
+  "version": "0.1.2",
   "description": "",
-  "main": "badger.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register spec.js",
-    "start": "node server.js"
+    "test": "exit 0",
+    "start": "node index.js"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
