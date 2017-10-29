@@ -2,7 +2,7 @@
   "name": "git-badger-repo",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "packages/git-badger/index.js",
   "repository" :
   { 
     "type" : "git",
