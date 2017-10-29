@@ -5,9 +5,9 @@ const fetch = require('node-fetch');
 
 const TEST_BADGE = 'eslint-errors';
 const TEST_PROJECT_1 = 'test-project-1';
-const server = require('./src/server.js');
+const server = require('./server.js');
 
-import store from './src/store.js';
+import store from './store.js';
 
 server(1337, store);
 describe('HTTP interface /:badgeType/:project', () => {

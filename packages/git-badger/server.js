@@ -1,15 +1,15 @@
 // @flow
 import express from 'express';
 import bodyParser from 'body-parser';
-import fs from 'fs';
+
 import getLink from './badger.js';
-import { Store } from './store.types.js';
+import { Store } from './types.js';
 
 const types = {
-  'eslint-errors': require('../templates/eslint-errors'),
-  'eslint-warnings': require('../templates/eslint-warnings'),
-  'flow-coverage': require('../templates/flow-coverage'),
-  'vue-component': require('../templates/vue-component-decorator')
+  'eslint-errors': require('./templates/eslint-errors'),
+  'eslint-warnings': require('./templates/eslint-warnings'),
+  'flow-coverage': require('./templates/flow-coverage'),
+  'vue-component': require('./templates/vue-component-decorator')
 };
 
 module.exports = function createApp(port: number, store: Store) {

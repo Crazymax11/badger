@@ -1,6 +1,7 @@
 // @flow
-
-import type { Project, Status, Subject } from './types.js';
+export type Project = string;
+export type Subject = string;
+export type Status = string;
 
 export type StoreReturn = {
   subject: Subject,
