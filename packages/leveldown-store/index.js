@@ -8,7 +8,8 @@ import type {
   Time,
   Project,
   Subject,
-  Status
+  Status,
+  StoreRecord
 } from 'git-badger-core/types.js';
 
 class LeveldownStore implements Store {
@@ -19,6 +20,14 @@ class LeveldownStore implements Store {
     this.db = levelup(leveldown(dbpath));
   }
 
+  /**
+   * Stores record to levelDb
+   * 
+   * @param {Project} project
+   * @param {Subject} subject
+   * @param {Status} status
+   * @param {Time} time
+   */
   async store(
     project: Project,
     subject: Subject,
@@ -26,38 +35,43 @@ class LeveldownStore implements Store {
     time: Time
   ): Promise<StoreReturn> {
     if (typeof time !== 'number') {
-      throw new Error('time must be number');
+      throw new Error('time must be a number');
     }
 
     if (typeof status !== 'string') {
-      throw new Error('status must be string');
+      throw new Error('status must be a string');
     }
 
     if (typeof project !== 'string') {
-      throw new Error('project must be string');
+      throw new Error('project must be a string');
     }
 
     if (typeof subject !== 'string') {
-      throw new Error('subject must be string');
+      throw new Error('subject must be a string');
     }
-    let history = '[]';
-    try {
-      history = await this.db.get(`${project}-${subject}`);
-    } catch (err) {
-      history = '[]';
-    }
-    history = JSON.parse(history);
+
+    const key = getKey(project, subject);
+    const history = await getFromLevelDB(this.db, key);
+
     history.push({
       status,
       time
     });
-    await this.db.put(`${project}-${subject}`, JSON.stringify(history));
+
+    await putToLevelDB(this.db, key, history);
+
     return {
       subject,
       status
     };
   }
 
+  /**
+   * Get last value from LevelDb
+   * 
+   * @param {Project} project 
+   * @param {Subject} subject 
+   */
   async getLast(project: Project, subject: Subject): Promise<StoreReturn> {
     if (typeof subject !== 'string') {
       throw new Error('subject must be a string');
@@ -66,14 +80,11 @@ class LeveldownStore implements Store {
     if (typeof project !== 'string') {
       throw new Error('project must be a string');
     }
-    let history = '[]';
-    try {
-      history = await this.db.get(`${project}-${subject}`);
-    } catch (err) {
-      history = '[]';
-    }
-    history = JSON.parse(history);
+
+    const key = getKey(project, subject);
+    const history = await getFromLevelDB(this.db, key);
     const record = history.slice(-1)[0];
+
     if (typeof record === 'undefined') {
       return {
         status: 'none',
@@ -87,12 +98,52 @@ class LeveldownStore implements Store {
     };
   }
 
+  /**
+   * Open levelDB
+   */
   open() {
     return this.db.open();
   }
+
+  /**
+   * Close levelDB
+   */
   close() {
     return this.db.close();
   }
+}
+
+/**
+ * Constructs key for levelDb from project and subject
+ * 
+ * @param {Project} project 
+ * @param {Subject} subject 
+ * @returns {string} levelDb key
+ */
+function getKey(project: Project, subject: Subject): string {
+  return `${project}-${subject}`;
+}
+
+/**
+ * Get key from levelDB. If any error, [] will be returned
+ * @param {leveldb} db leveldb instance
+ * @param {string} key leveldb key
+ */
+function getFromLevelDB(db: any, key: string): Promise<StoreRecord[]> {
+  return db
+    .get(key)
+    .catch(() => '[]')
+    .then(rawValue => JSON.parse(rawValue));
+}
+
+/**
+ * 
+ * @param {levelDb} db levelDB instance
+ * @param {key} key levelDB key
+ * @param {any} value value will be JSON.stringified
+ */
+function putToLevelDB(db: any, key: string, value: any): Promise<any> {
+  return db.put(key, JSON.stringify(value));
 }
 
 export default LeveldownStore;
