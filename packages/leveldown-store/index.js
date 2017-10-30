@@ -13,7 +13,9 @@ import type {
 
 class LeveldownStore implements Store {
   db: any;
+  dbpath: string;
   constructor(dbpath: string) {
+    this.dbpath = dbpath;
     this.db = levelup(leveldown(dbpath));
   }
 
@@ -23,6 +25,21 @@ class LeveldownStore implements Store {
     status: Status,
     time: Time
   ): Promise<StoreReturn> {
+    if (typeof time !== 'number') {
+      throw new Error('time must be number');
+    }
+
+    if (typeof status !== 'string') {
+      throw new Error('status must be string');
+    }
+
+    if (typeof project !== 'string') {
+      throw new Error('project must be string');
+    }
+
+    if (typeof subject !== 'string') {
+      throw new Error('subject must be string');
+    }
     let history = '[]';
     try {
       history = await this.db.get(`${project}-${subject}`);
@@ -42,6 +59,13 @@ class LeveldownStore implements Store {
   }
 
   async getLast(project: Project, subject: Subject): Promise<StoreReturn> {
+    if (typeof subject !== 'string') {
+      throw new Error('subject must be a string');
+    }
+
+    if (typeof project !== 'string') {
+      throw new Error('project must be a string');
+    }
     let history = '[]';
     try {
       history = await this.db.get(`${project}-${subject}`);
@@ -49,8 +73,8 @@ class LeveldownStore implements Store {
       history = '[]';
     }
     history = JSON.parse(history);
-    const status = history.slice(-1)[0].status;
-    if (typeof status === 'undefined') {
+    const record = history.slice(-1)[0];
+    if (typeof record === 'undefined') {
       return {
         status: 'none',
         subject
@@ -58,7 +82,7 @@ class LeveldownStore implements Store {
     }
 
     return {
-      status,
+      status: record.status,
       subject
     };
   }
