@@ -2,12 +2,18 @@
 export type Project = string;
 export type Subject = string;
 export type Status = string;
+export type Time = number;
 
 export type StoreReturn = {
   subject: Subject,
   status: Status
 };
-export type Time = number;
+
+export type StoreRecord = {
+  time: Time,
+  status: Status
+};
+
 export interface Store {
   store(
     project: Project,

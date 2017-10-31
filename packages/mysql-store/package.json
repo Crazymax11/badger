@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register test.spec.js spec.js"
+    "test": "mocha --compilers js:babel-core/register test.spec.js spec.js",
+    "flow": "flow"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

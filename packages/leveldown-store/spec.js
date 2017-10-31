@@ -2,6 +2,8 @@ import { expect } from 'chai';
 import rimraf from 'rimraf';
 import Store from './index.js';
 
+import testStore from 'git-badger-core/store-tests.js';
+
 describe('#leveldownStore', () => {
   it('should be created', () => {
     const store = new Store('./test-should-be-created.db');
@@ -31,3 +33,27 @@ describe('#leveldownStore', () => {
     });
   });
 });
+
+testStore(
+  () => new Store(`./test-${Date.now()}.db`),
+  store =>
+    new Promise((resolve, reject) => {
+      store.close(err => {
+        if (err) {
+          return reject(err);
+        }
+      });
+      setTimeout(resolve, 100);
+    }).then(
+      () =>
+        new Promise((resolve, reject) => {
+          rimraf(store.dbpath, err => {
+            if (err) {
+              console.error(err);
+              return reject(err);
+            }
+            return resolve();
+          });
+        })
+    )
+);
