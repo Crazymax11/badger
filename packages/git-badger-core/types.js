@@ -40,10 +40,7 @@ export interface Store {
     time: Time
   ): Promise<StoreReturn>;
   getLast(project: Project, subject: Subject): Promise<StoreReturn>;
-  getStatus(): Promise<StoreStatus>;
-  getProjectStatus(Project): Promise<StoreStatus>;
-  getSubjectStatus(Subject): Promise<StoreStatus>;
-  getProjectSubjectStatus(Project, Subject): Promise<StoreStatus>;
+  getStatus(Project, Subject): Promise<StoreStatus>;
 }
 
 type Color =
