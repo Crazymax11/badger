@@ -81,6 +81,7 @@ describe('#status', () => {
     it('should return application status in system status');
     it('should return error status when store is in fire');
     it('should return json if json asked');
+    it('should return json be default');
     it('should return html in browser');
   });
   describe('/status/:badge', () => {
@@ -89,6 +90,7 @@ describe('#status', () => {
     it('should return error status of store when store is in fire');
     it('should return examples of badge from templater');
     it('should return json if json asked');
+    it('should return json be default');
     it('should return html in browser');
   });
   describe('/status/:badge/:project', () => {
@@ -98,6 +100,7 @@ describe('#status', () => {
     it('should return error status of store when store is in fire');
     it('should return examples of badge from templater');
     it('should return json if json asked');
+    it('should return json be default');
     it('should return html in browser');
   });
   describe('/status/projects/:project', () => {
@@ -106,6 +109,7 @@ describe('#status', () => {
     it('should return error status of store when store is in fire');
     it('should return current badges for project');
     it('should return json if json asked');
+    it('should return json be default');
     it('should return html in browser');
   });
 });
