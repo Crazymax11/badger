@@ -58,7 +58,7 @@ export default function testStore(
       });
     });
     describe('#getLast', () => {
-      it('should return status and subject like provided in store', function test() {
+      it('should return status and subject same as were provided to store', function test() {
         const { store, project, subject, status, time } = this.context;
 
         return store.store(project, subject, status, time).then(() =>
@@ -70,7 +70,7 @@ export default function testStore(
           )
         );
       });
-      it('should return status and subject like provided in last store', function test() {
+      it('should return status and subject same as were provided in last store', function test() {
         const { store, project, subject, status, time } = this.context;
 
         return store
@@ -85,7 +85,7 @@ export default function testStore(
             )
           );
       });
-      it('should return none status and subject if no records were provided in store', function test() {
+      it('should return none status and subject if no records were provided in store before', function test() {
         const { store, project, subject } = this.context;
         return store.getLast(project, subject).then(res =>
           expect(res).to.deep.equal({
@@ -122,7 +122,7 @@ export default function testStore(
           )
         ).to.be.rejected;
       });
-      it('should return status and subject like provided in last store for same project/subject', function test() {
+      it('should return status and subject same as were provided in last store for same project/subject', function test() {
         const { store, project, subject, status, time } = this.context;
 
         return store
