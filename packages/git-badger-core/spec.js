@@ -1,23 +1,25 @@
-const chai = require('chai');
-
-const { expect } = chai;
-const fetch = require('node-fetch');
+import { expect } from 'chai';
+import fetch from 'node-fetch';
 
 import store from './store.js';
+import server from './server.js';
 
-const server = require('./server.js');
+import eslintErrors from './templates/eslint-errors';
+import eslintWarnings from './templates/eslint-warnings';
+import flowCoverage from './templates/flow-coverage';
+import vueComponentDecorator from './templates/vue-component-decorator';
 
 const TEST_BADGE = 'eslint-errors';
 const TEST_PROJECT_1 = 'test-project-1';
 
 const badges = {
-  'eslint-errors': require('./templates/eslint-errors.js'),
-  'eslint-warnings': require('./templates/eslint-warnings.js'),
-  'flow-coverage': require('./templates/flow-coverage.js'),
-  'vue-component-decorator': require('./templates/vue-component-decorator.js')
+  'eslint-errors': eslintErrors,
+  'eslint-warnings': eslintWarnings,
+  'flow-coverage': flowCoverage,
+  'vue-component-decorator': vueComponentDecorator
 };
 server(1337, store, badges);
-describe('HTTP interface /:badgeType/:project', () => {
+describe('HTTP interface /badges/:badgeType/:project', () => {
   it('server should be available', () => getBadge(TEST_BADGE, TEST_PROJECT_1));
   it('POST should return 200', () =>
     createBadge(TEST_BADGE, TEST_PROJECT_1, 1).then(res =>
@@ -72,6 +74,42 @@ describe('HTTP interface /:badgeType/:project', () => {
       ));
 });
 
+describe('#status', () => {
+  describe('/status', () => {
+    it('should return system status');
+    it('should return store status in system status');
+    it('should return application status in system status');
+    it('should return error status when store is in fire');
+    it('should return json if json asked');
+    it('should return html in browser');
+  });
+  describe('/status/:badge', () => {
+    it('should return 404 then badge not found');
+    it('should return store status for badge');
+    it('should return error status of store when store is in fire');
+    it('should return examples of badge from templater');
+    it('should return json if json asked');
+    it('should return html in browser');
+  });
+  describe('/status/:badge/:project', () => {
+    it('should return 404 then badge not found');
+    it('should return 404 then project not found');
+    it('should return store status for badge and project');
+    it('should return error status of store when store is in fire');
+    it('should return examples of badge from templater');
+    it('should return json if json asked');
+    it('should return html in browser');
+  });
+  describe('/status/projects/:project', () => {
+    it('should return 404 then project not found');
+    it('should return store status for project');
+    it('should return error status of store when store is in fire');
+    it('should return current badges for project');
+    it('should return json if json asked');
+    it('should return html in browser');
+  });
+});
+
 setTimeout(() => process.exit(1), 5000);
 function createBadge(badge, project) {
   return fetch(`http://localhost:1337/${badge}/${project}`, {
@@ -86,7 +124,7 @@ function createBadge(badge, project) {
 }
 
 function getBadge(badge, project) {
-  return fetch(`http://localhost:1337/${badge}/${project}`);
+  return fetch(`http://localhost:1337/badges/${badge}/${project}`);
 }
 
 function getBadgesList() {
