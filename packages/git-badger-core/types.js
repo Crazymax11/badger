@@ -17,9 +17,9 @@ export type StoreRecord = {
 export type StoreStatus = {
   records: number,
   projects: number,
-  badges: number,
+  subjects: number,
   status: string,
-  additionalFields: {
+  additionalFields?: {
     [string]: string
   }
 };
@@ -41,9 +41,9 @@ export interface Store {
   ): Promise<StoreReturn>;
   getLast(project: Project, subject: Subject): Promise<StoreReturn>;
   getStatus(): Promise<StoreStatus>;
-  getProjectStatus(): Promise<StoreStatus>;
-  getBadgeStatus(): Promise<StoreStatus>;
-  getProjectBadgeStatus(): Promise<StoreStatus>;
+  getProjectStatus(Project): Promise<StoreStatus>;
+  getSubjectStatus(Subject): Promise<StoreStatus>;
+  getProjectSubjectStatus(Project, Subject): Promise<StoreStatus>;
 }
 
 type Color =
