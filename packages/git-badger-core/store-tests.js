@@ -6,7 +6,7 @@ import chaiAsPromised from 'chai-as-promised';
 import type { Store } from './types.js';
 
 type StoreCreator = () => Store;
-type Cleanup = Store => Promise;
+type Cleanup = Store => Promise<*>;
 
 chai.use(chaiAsPromised);
 
@@ -61,14 +61,15 @@ export default function testStore(
       it('should return status and subject same as were provided to store', function test() {
         const { store, project, subject, status, time } = this.context;
 
-        return store.store(project, subject, status, time).then(() =>
-          store.getLast(project, subject).then(res =>
+        return store
+          .store(project, subject, status, time)
+          .then(() => store.getLast(project, subject))
+          .then(res =>
             expect(res).to.deep.equal({
               subject,
               status
             })
-          )
-        );
+          );
       });
       it('should return status and subject same as were provided in last store', function test() {
         const { store, project, subject, status, time } = this.context;
@@ -76,13 +77,12 @@ export default function testStore(
         return store
           .store(project, subject, status, time)
           .then(() => store.store(project, subject, `${status}-test`, time + 1))
-          .then(() =>
-            store.getLast(project, subject).then(res =>
-              expect(res).to.deep.equal({
-                subject,
-                status: `${status}-test`
-              })
-            )
+          .then(() => store.getLast(project, subject))
+          .then(res =>
+            expect(res).to.deep.equal({
+              subject,
+              status: `${status}-test`
+            })
           );
       });
       it('should return none status and subject if no records were provided in store before', function test() {
@@ -130,13 +130,12 @@ export default function testStore(
           .then(() =>
             store.store(`${project}test`, `${subject}test`, status, time)
           )
-          .then(() =>
-            store.getLast(project, subject).then(res =>
-              expect(res).to.deep.equal({
-                subject,
-                status
-              })
-            )
+          .then(() => store.getLast(project, subject))
+          .then(res =>
+            expect(res).to.deep.equal({
+              subject,
+              status
+            })
           );
       });
     });
