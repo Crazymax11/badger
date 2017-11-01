@@ -58,4 +58,9 @@ export type Badge = {
   subject: Subject
 };
 
-export type BadgeCreator = (status: Status) => Badge;
+export type BadgeCreator = {
+  name: string,
+  create(status: Status): Badge,
+  examples: Status[],
+  description: string
+};
