@@ -12,17 +12,19 @@ module.exports = function createApp(
 ) {
   const app = express();
   app.use(bodyParser.json());
-  app.get('/:badgeType/:project', async (req, res) => {
+  app.get('/badges/:badgeType/:project', async (req, res) => {
     const badgeType = req.params.badgeType;
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
+    console.log('lastV', lastValue)
     const badgeHandler = typesMap[badgeType];
-    const badgeData = badgeHandler(lastValue);
+    const badgeData = badgeHandler(lastValue.status);
     const badge = getLink(badgeData);
+    console.log(badge);
     return res.send(badge);
   });
 
-  app.post('/:badgeType/:project', async (req, res) => {
+  app.post('/badges/:badgeType/:project', async (req, res) => {
     const status = req.body.status;
     const badgeType = req.params.badgeType;
     const project = req.params.project;
@@ -31,6 +33,7 @@ module.exports = function createApp(
     }
 
     const badgeHandler = typesMap[req.params.badgeType];
+    console.log(badgeHandler);
     await store.store(project, badgeType, status, Date.now());
     if (badgeHandler) {
       const meta = badgeHandler(status);

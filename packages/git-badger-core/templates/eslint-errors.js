@@ -1,5 +1,6 @@
 module.exports = function eslintError(value) {
-    if (value > 0) {
+    console.log(value);
+    if (Number(value) > 0) {
         return {
             color: 'red',
             subject: 'eslint-errors',

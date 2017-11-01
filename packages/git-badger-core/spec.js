@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import fetch from 'node-fetch';
 
-import store from './store.js';
+import store from 'git-badger-leveldown-store';
 import server from './server.js';
 
 import eslintErrors from './templates/eslint-errors';
@@ -18,7 +18,7 @@ const badges = {
   'flow-coverage': flowCoverage,
   'vue-component-decorator': vueComponentDecorator
 };
-server(1337, store, badges);
+server(1337, new store('./test-db'), badges);
 describe('HTTP interface /badges/:badgeType/:project', () => {
   it('server should be available', () => getBadge(TEST_BADGE, TEST_PROJECT_1));
   it('POST should return 200', () =>
@@ -47,14 +47,14 @@ describe('HTTP interface /badges/:badgeType/:project', () => {
           .then(badgesList => expect(postRes).to.deep.equal(badgesList))
       ));
   it('POST should return 4xx if no value provided', () =>
-    fetch(`http://localhost:1337/${TEST_BADGE}/${TEST_PROJECT_1}`, {
+    fetch(`http://localhost:1337/badges/${TEST_BADGE}/${TEST_PROJECT_1}`, {
       method: 'POST',
       body: {
-        value2: 1
+        value2: '123'
       }
     }).then(res => expect(res.status).to.equal(400)));
   it('GET should return right badge', () => {
-    const bestanswer = 'https://img.shields.io/badge/eslint--errors-1-red.svg';
+    const bestanswer = 'https://img.shields.io/badge/eslint--errors-123-red.svg';
     return createBadge(TEST_BADGE, TEST_PROJECT_1, 1)
       .then(() => getBadge(TEST_BADGE, TEST_PROJECT_1))
       .then(res => res.text())
@@ -116,10 +116,10 @@ describe('#status', () => {
 
 setTimeout(() => process.exit(1), 5000);
 function createBadge(badge, project) {
-  return fetch(`http://localhost:1337/${badge}/${project}`, {
+  return fetch(`http://localhost:1337/badges/${badge}/${project}`, {
     method: 'POST',
     body: JSON.stringify({
-      status: 1
+      status: '123'
     }),
     headers: {
       'Content-Type': 'application/json'
