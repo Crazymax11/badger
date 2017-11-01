@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import getLink from './badger.js';
 import type { Store, BadgeCreator } from './types.js';
 
-module.exports = function createApp(
+export default function createApp(
   port: number,
   store: Store,
   typesMap: { [string]: BadgeCreator }
@@ -16,7 +16,7 @@ module.exports = function createApp(
     const badgeType = req.params.badgeType;
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
-    console.log('lastV', lastValue)
+    console.log('lastV', lastValue);
     const badgeHandler = typesMap[badgeType];
     const badgeData = badgeHandler(lastValue.status);
     const badge = getLink(badgeData);
@@ -43,7 +43,35 @@ module.exports = function createApp(
     return res.status(400).json(Object.keys(typesMap));
   });
 
-  app.get('/', (req, res) => res.json(Object.keys(typesMap)));
+  app.get('/', (req, res) => {
+    const badgesSections = Object.values(typesMap).map(badgeCreator => {
+      const examples = badgeCreator.examples.map(
+        example => `<img src="${getLink(badgeCreator.create(example))}">`
+      );
+      return `
+        <section>
+          <h3>
+            ${badgeCreator.name}
+          </h3>
+          <div>
+            <span> ${badgeCreator.description} </span>
+            ${examples.join('')}
+          </div>
+        </section>
+      `;
+    });
+
+    const html = `
+      <html>
+        <head>
+        </head>
+        <body>
+          ${badgesSections.join('')}
+        </body>
+      </html>
+    `;
+    res.send(html);
+  });
 
   app.listen(port, err => {
     if (err) {
@@ -54,4 +82,12 @@ module.exports = function createApp(
   });
 
   return app;
+}
+
+import eslintErrors from './templates/eslint-errors.js';
+
+const templates = {
+  'eslint-errors': eslintErrors
 };
+
+export { templates };

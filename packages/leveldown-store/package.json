@@ -2,9 +2,10 @@
   "name": "git-badger-leveldown-store",
   "version": "0.2.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register test.spec.js spec.js"
+    "test": "mocha --compilers js:babel-core/register test.spec.js spec.js",
+    "build": "webpack"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -38,7 +39,8 @@
     "prettier": "^1.7.4",
     "request": "^2.83.0",
     "rimraf": "^2.6.2",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "author": "",
   "license": "ISC"
