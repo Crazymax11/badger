@@ -146,7 +146,7 @@ function getDbStatus(db: any, project: ?Project, subject: ?Subject) {
       .createReadStream()
       .on('data', data => {
         const { subject: dataSubject, project: dataProject } = parseKey(
-          data.key
+          String(data.key)
         );
         if (project && project !== dataProject) {
           return;
