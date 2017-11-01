@@ -113,6 +113,11 @@ class LeveldownStore implements Store {
     return this.db.close();
   }
 
+  /**
+   * Get status of db
+   * @param {Project} project
+   * @param {Subject} subject
+   */
   getStatus(project: Project, subject: Subject): Promise<StoreStatus> {
     return getDbStatus(this.db, project, subject);
   }
