@@ -9,7 +9,8 @@ import type {
   Project,
   Subject,
   Status,
-  StoreRecord
+  StoreRecord,
+  StoreStatus
 } from 'git-badger-core/types.js';
 
 class LeveldownStore implements Store {
@@ -111,6 +112,15 @@ class LeveldownStore implements Store {
   close() {
     return this.db.close();
   }
+
+  /**
+   * Get status of db
+   * @param {Project} project
+   * @param {Subject} subject
+   */
+  getStatus(project: Project, subject: Subject): Promise<StoreStatus> {
+    return getDbStatus(this.db, project, subject);
+  }
 }
 
 /**
@@ -121,7 +131,57 @@ class LeveldownStore implements Store {
  * @returns {string} levelDb key
  */
 function getKey(project: Project, subject: Subject): string {
-  return `${project}-${subject}`;
+  return `${project}---${subject}`;
+}
+
+function parseKey(key: string): { project: Project, subject: Subject } {
+  const [project, subject] = key.split('---');
+  return {
+    project,
+    subject
+  };
+}
+
+function getDbStatus(db: any, project: ?Project, subject: ?Subject) {
+  let records = 0;
+  const projectsSet = new Set();
+  const subjectsSet = new Set();
+  return new Promise(resolve => {
+    db
+      .createReadStream()
+      .on('data', data => {
+        const { subject: dataSubject, project: dataProject } = parseKey(
+          String(data.key)
+        );
+        if (project && project !== dataProject) {
+          return;
+        }
+
+        if (subject && subject !== dataSubject) {
+          return;
+        }
+
+        projectsSet.add(dataProject);
+        subjectsSet.add(dataSubject);
+        records += JSON.parse(data.value).length;
+      })
+      .on('error', err =>
+        resolve({
+          status: err.toString(),
+          projects: 0,
+          subjects: 0,
+          records: 0
+        })
+      )
+      .on('end', () =>
+        resolve({
+          status: 'ok',
+          projects: projectsSet.size,
+          subjects: subjectsSet.size,
+          records
+        })
+      );
+  });
 }
 
 /**

@@ -139,6 +139,80 @@ export default function testStore(
           );
       });
     });
+    // it does not check count of records/projects/subjects in response
+    // because it depends on implementation details
+    // For example some stores can store only last datas or
+    // store can have additional filter logic in getStatus
+    // like globs: proj*
+    describe('#getStatus', () => {
+      it('should return status', function test() {
+        const { store, project, subject, status, time } = this.context;
+        return store
+          .store(project, subject, status, time)
+          .then(() => store.getStatus())
+          .then(result => {
+            expect(result).to.have.all.keys([
+              'records',
+              'projects',
+              'subjects',
+              'status'
+            ]);
+          });
+      });
+      it('should return status by project', function test() {
+        const { store, project, subject, status, time } = this.context;
+        return store
+          .store(project, subject, status, time)
+          .then(() => store.getStatus(project))
+          .then(result => {
+            expect(result).to.have.all.keys([
+              'records',
+              'projects',
+              'subjects',
+              'status'
+            ]);
+          });
+      });
+      it('should return status by subject', function test() {
+        const { store, project, subject, status, time } = this.context;
+        return store
+          .store(project, subject, status, time)
+          .then(() => store.getStatus(null, subject))
+          .then(result => {
+            expect(result).to.have.all.keys([
+              'records',
+              'projects',
+              'subjects',
+              'status'
+            ]);
+          });
+      });
+      it('should return status by project and status', function test() {
+        const { store, project, subject, status, time } = this.context;
+        return store
+          .store(project, subject, status, time)
+          .then(() => store.getStatus(project, subject))
+          .then(result => {
+            expect(result).to.have.all.keys([
+              'records',
+              'projects',
+              'subjects',
+              'status'
+            ]);
+          });
+      });
+      it('should return status even no records were stored', function test() {
+        const { store } = this.context;
+        return store.getStatus().then(result => {
+          expect(result).to.have.all.keys([
+            'records',
+            'projects',
+            'subjects',
+            'status'
+          ]);
+        });
+      });
+    });
   });
 }
 
