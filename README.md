@@ -14,6 +14,15 @@ The main difference from other badge services is configurability. It has built-i
 
 ## TODO
 
+- [ ] Show list of available badges on root url with examples and maybe description.
+    - [ ] Declare abstract badger type with next public API
+        - [ ] create(status): badgeMeta
+        - [ ] examples: [{badgeMeta, description}]
+        - [ ] description: string - short text about badge goal
+    - [ ] Create template to show badges with description
+    - [ ] Render template with all available badges
+
+
 - [ ] Show badge/project status history
 - [ ] Show page with all available badges
 - [x] Make git-badger package which contains app and depends on git-badger-core
