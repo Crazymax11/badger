@@ -19,9 +19,9 @@ export default function createApp(
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
     const badgeHandler = typesMap[badgeType];
-    const badgeData = badgeHandler(lastValue.status);
+    const badgeData = badgeHandler.create(lastValue.status);
     const badge = getLink(badgeData);
-    return res.send(badge);
+    return res.redirect(badge);
   });
 
   app.post('/badges/:badgeType/:project', async (req, res) => {
