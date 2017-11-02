@@ -2,10 +2,11 @@
   "name": "git-badger-core",
   "version": "0.2.1",
   "description": "",
-  "main": "server.js",
+  "main": "dist/app.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register spec.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "webpack"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -19,6 +20,7 @@
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
+    "pug": "^2.0.0-rc.4",
     "yaml": "^0.3.0"
   },
   "devDependencies": {
@@ -41,7 +43,8 @@
     "prettier": "^1.7.4",
     "request": "^2.83.0",
     "rimraf": "^2.6.2",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-node-externals": "^1.6.0"
   },
   "author": "",
   "license": "ISC"

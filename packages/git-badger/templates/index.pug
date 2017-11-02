@@ -1,0 +1,13 @@
+html
+    head
+    body
+        each badge in badges
+            section
+                h3 #{badge.name}
+                div
+                    span #{badge.description}
+                    br
+                    each example in badge.examples
+                        - var link = getLink(badge.create(example))
+                        img(src=''+link)
+                        br

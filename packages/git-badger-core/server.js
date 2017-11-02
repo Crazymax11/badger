@@ -5,22 +5,22 @@ import bodyParser from 'body-parser';
 import getLink from './badger.js';
 import type { Store, BadgeCreator } from './types.js';
 
-module.exports = function createApp(
+export default function createApp(
   port: number,
   store: Store,
   typesMap: { [string]: BadgeCreator }
 ) {
   const app = express();
+  app.set('view engine', 'pug');
+  app.set('views', './templates');
   app.use(bodyParser.json());
   app.get('/badges/:badgeType/:project', async (req, res) => {
     const badgeType = req.params.badgeType;
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
-    console.log('lastV', lastValue)
     const badgeHandler = typesMap[badgeType];
     const badgeData = badgeHandler(lastValue.status);
     const badge = getLink(badgeData);
-    console.log(badge);
     return res.send(badge);
   });
 
@@ -33,7 +33,6 @@ module.exports = function createApp(
     }
 
     const badgeHandler = typesMap[req.params.badgeType];
-    console.log(badgeHandler);
     await store.store(project, badgeType, status, Date.now());
     if (badgeHandler) {
       const meta = badgeHandler(status);
@@ -43,7 +42,22 @@ module.exports = function createApp(
     return res.status(400).json(Object.keys(typesMap));
   });
 
-  app.get('/', (req, res) => res.json(Object.keys(typesMap)));
+  app.get('/', (req, res) => {
+    res.render(
+      'index',
+      {
+        badges: typesMap,
+        getLink
+      },
+      (err, html) => {
+        if (err) {
+          console.error(err);
+          return res.send(err);
+        }
+        return res.send(html);
+      }
+    );
+  });
 
   app.listen(port, err => {
     if (err) {
@@ -54,4 +68,4 @@ module.exports = function createApp(
   });
 
   return app;
-};
+}
