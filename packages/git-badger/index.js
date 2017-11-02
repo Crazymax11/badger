@@ -1,9 +1,11 @@
 // @flow
 import Store from 'git-badger-leveldown-store';
-import server, { templates } from 'git-badger-core';
+import server from 'git-badger-core';
 
-// const badges = {
-//   'eslint-errors': eslintErrorsBadge
-// };
+import eslintErrorsBadge from './badges/eslint-errors.js';
 
-server(80, new Store('tmp/db'), templates);
+const badges = {
+  'eslint-errors': eslintErrorsBadge
+};
+
+server(80, new Store('tmp/db'), badges);

@@ -11,16 +11,16 @@ export default function createApp(
   typesMap: { [string]: BadgeCreator }
 ) {
   const app = express();
+  app.set('view engine', 'pug');
+  app.set('views', './templates');
   app.use(bodyParser.json());
   app.get('/badges/:badgeType/:project', async (req, res) => {
     const badgeType = req.params.badgeType;
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
-    console.log('lastV', lastValue);
     const badgeHandler = typesMap[badgeType];
     const badgeData = badgeHandler(lastValue.status);
     const badge = getLink(badgeData);
-    console.log(badge);
     return res.send(badge);
   });
 
@@ -33,7 +33,6 @@ export default function createApp(
     }
 
     const badgeHandler = typesMap[req.params.badgeType];
-    console.log(badgeHandler);
     await store.store(project, badgeType, status, Date.now());
     if (badgeHandler) {
       const meta = badgeHandler(status);
@@ -44,33 +43,20 @@ export default function createApp(
   });
 
   app.get('/', (req, res) => {
-    const badgesSections = Object.values(typesMap).map(badgeCreator => {
-      const examples = badgeCreator.examples.map(
-        example => `<img src="${getLink(badgeCreator.create(example))}">`
-      );
-      return `
-        <section>
-          <h3>
-            ${badgeCreator.name}
-          </h3>
-          <div>
-            <span> ${badgeCreator.description} </span>
-            ${examples.join('')}
-          </div>
-        </section>
-      `;
-    });
-
-    const html = `
-      <html>
-        <head>
-        </head>
-        <body>
-          ${badgesSections.join('')}
-        </body>
-      </html>
-    `;
-    res.send(html);
+    res.render(
+      'index',
+      {
+        badges: typesMap,
+        getLink
+      },
+      (err, html) => {
+        if (err) {
+          console.error(err);
+          return res.send(err);
+        }
+        return res.send(html);
+      }
+    );
   });
 
   app.listen(port, err => {
@@ -83,11 +69,3 @@ export default function createApp(
 
   return app;
 }
-
-import eslintErrors from './templates/eslint-errors.js';
-
-const templates = {
-  'eslint-errors': eslintErrors
-};
-
-export { templates };
