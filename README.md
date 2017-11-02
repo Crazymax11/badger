@@ -11,7 +11,7 @@ Git badger provides a simple rest interface:
 * **GET** `/status/projects/:project` returns store status for given project
 
 The main difference from other badge services is configurability. It has built-in badges, but if you want a specific badge you can make custom badge creator. For example you want to count `TODO`s comments in your repo, when you need to make `todo-badge-creator` - javascript function that transforms `status` to object with props `color`, `subject`, `status`. Now you can use badge creator with git badger to show your badge in any repo.
-
+[![Eslint Errors](http://localhost/badges/eslint-errors/test)](http://localhost/badges/eslint-errors/test)
 ## TODO
 
 - [x] Show list of available badges on root url with examples and maybe description.
