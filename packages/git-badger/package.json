@@ -1,6 +1,6 @@
 {
   "name": "git-badger",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,8 +16,8 @@
     "body-parser": "^1.18.2",
     "command-line-args": "^4.0.7",
     "express": "^4.16.2",
-    "git-badger-core": "^0.3.1",
-    "git-badger-leveldown-store": "^0.3.1",
+    "git-badger-core": "^0.3.2",
+    "git-badger-leveldown-store": "^0.3.2",
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
