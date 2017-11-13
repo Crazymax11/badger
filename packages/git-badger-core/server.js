@@ -1,6 +1,7 @@
 // @flow
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 import getLink from './badger.js';
 import type { Store, BadgeCreator } from './types.js';
@@ -14,6 +15,7 @@ export default function createApp(
   app.set('view engine', 'pug');
   app.set('views', './templates');
   app.use(bodyParser.json());
+  app.use(cors());
   app.get('/badges/:badgeType/:project', async (req, res) => {
     const badgeType = req.params.badgeType;
     const project = req.params.project;
@@ -29,13 +31,13 @@ export default function createApp(
     const badgeType = req.params.badgeType;
     const project = req.params.project;
     if (typeof status === 'undefined') {
-      return res.status(400).send('lol kek cheburek');
+      return res.status(400).send('cant get status from body');
     }
 
     const badgeHandler = typesMap[req.params.badgeType];
     await store.store(project, badgeType, status, Date.now());
     if (badgeHandler) {
-      const meta = badgeHandler(status);
+      const meta = badgeHandler.create(status);
       const badge = getLink(meta);
       return res.send(badge);
     }
