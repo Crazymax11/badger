@@ -5,13 +5,11 @@ module.exports = class extends Generator {
         return this.prompt([{
             type: 'input',
             name: 'badgeName',
-            message: 'enter your badge name (kebab case prefered, ex: eslint-erros)',
-            store: true
+            message: 'enter your badge name (kebab case prefered, ex: eslint-erros)'
         }, {
             type: 'input',
             name: 'badgeDescription',
-            message: 'enter your badge description',
-            store: true
+            message: 'enter your badge description'
         }]).then(answers => {
             this.badgeName = answers.badgeName;
             this.badgeDescription = answers.badgeDescription;
