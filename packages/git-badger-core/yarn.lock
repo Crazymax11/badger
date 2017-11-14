@@ -2331,9 +2331,9 @@ git-badger-core@^0.3.1:
     pug "^2.0.0-rc.4"
     yaml "^0.3.0"
 
-git-badger-leveldown-store@^0.3.1:
+git-badger-leveldown-store@^0.3.2:
   version "0.3.1"
-  resolved "https://registry.yarnpkg.com/git-badger-leveldown-store/-/git-badger-leveldown-store-0.3.1.tgz#870b922dee9e4cbee9a7bbab261d1487f88d3b00"
+  resolved "http://sinopia.app.s/git-badger-leveldown-store/-/git-badger-leveldown-store-0.3.1.tgz#870b922dee9e4cbee9a7bbab261d1487f88d3b00"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2347,9 +2347,9 @@ git-badger-leveldown-store@^0.3.1:
     mysql "^2.15.0"
     yaml "^0.3.0"
 
-git-badger-mysql-store@^0.3.1:
+git-badger-mysql-store@^0.3.1, git-badger-mysql-store@^0.3.2:
   version "0.3.1"
-  resolved "https://registry.yarnpkg.com/git-badger-mysql-store/-/git-badger-mysql-store-0.3.1.tgz#878dc94101a8257a53538945490bf9abdc0a96c6"
+  resolved "http://sinopia.app.s/git-badger-mysql-store/-/git-badger-mysql-store-0.3.1.tgz#878dc94101a8257a53538945490bf9abdc0a96c6"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
