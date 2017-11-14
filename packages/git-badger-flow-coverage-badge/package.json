@@ -1,13 +1,11 @@
 {
-    "name": "git-badger-flow-coverage-badge",
-    "version": "0.0.0",
-    "description": "Badge shows flow coverage of your project",
-    "main": "index.js",
-    "keywords": [
-      "git-badger-badge"
-    ],
-    "devDependencies": {},
-    "author": "",
-    "license": "ISC"
-  }
-  
+  "name": "git-badger-flow-coverage-badge",
+  "version": "0.3.12",
+  "description": "Badge shows flow coverage of your project",
+  "main": "index.js",
+  "keywords": [
+    "git-badger-badge"
+  ],
+  "author": "",
+  "license": "ISC"
+}
