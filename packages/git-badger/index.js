@@ -8,4 +8,4 @@ const badges = {
   'eslint-errors': eslintErrorsBadge
 };
 
-server(80, new Store('./tmp/db'), badges);
+server(80, new Store('./db'), badges);
