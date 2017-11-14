@@ -1,6 +1,6 @@
 {
   "name": "git-badger-mysql-store",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "body-parser": "^1.18.2",
     "command-line-args": "^4.0.7",
     "express": "^4.16.2",
-    "git-badger-core": "^0.3.2",
+    "git-badger-core": "^0.3.4",
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
