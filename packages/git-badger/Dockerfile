@@ -7,4 +7,6 @@ ADD templates /badger/templates
 
 RUN cd /badger && npm install
 
+EXPOSE 80:80
+
 CMD cd badger && node /badger/app.js

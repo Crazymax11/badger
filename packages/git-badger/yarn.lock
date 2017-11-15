@@ -2307,27 +2307,9 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-git-badger-core@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/git-badger-core/-/git-badger-core-0.3.1.tgz#6db1f5122dcdc1e58a77dfff8ffffd02ca90a474"
-  dependencies:
-    babel-core "^6.26.0"
-    babel-loader "^7.1.2"
-    babel-preset-env "^1.6.1"
-    babel-preset-flow "^6.23.0"
-    body-parser "^1.18.2"
-    command-line-args "^4.0.7"
-    express "^4.16.2"
-    git-badger-mysql-store "^0.3.1"
-    leveldown "^2.0.0"
-    levelup "^2.0.0"
-    mysql "^2.15.0"
-    pug "^2.0.0-rc.4"
-    yaml "^0.3.0"
-
-git-badger-core@^0.3.2:
-  version "0.3.2"
-  resolved "http://sinopia.app.s/git-badger-core/-/git-badger-core-0.3.2.tgz#8c659ff728e2416e597869e7b2e8d1ffa304cd79"
+git-badger-core@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-core/-/git-badger-core-0.4.1.tgz#bcb0961ace0a7778498c6ebe2e7f2291a0873b9b"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2337,16 +2319,28 @@ git-badger-core@^0.3.2:
     command-line-args "^4.0.7"
     cors "^2.8.4"
     express "^4.16.2"
-    git-badger-mysql-store "^0.3.2"
+    git-badger-mysql-store "^0.4.1"
     leveldown "^2.0.0"
     levelup "^2.0.0"
     mysql "^2.15.0"
     pug "^2.0.0-rc.4"
     yaml "^0.3.0"
 
-git-badger-leveldown-store@^0.3.2:
-  version "0.3.1"
-  resolved "http://sinopia.app.s/git-badger-leveldown-store/-/git-badger-leveldown-store-0.3.1.tgz#870b922dee9e4cbee9a7bbab261d1487f88d3b00"
+git-badger-eslint-errors-badge@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-eslint-errors-badge/-/git-badger-eslint-errors-badge-0.4.1.tgz#23439c4bebd94556c5e0dd1ca57f1e7a67363e58"
+
+git-badger-eslint-warnings-badge@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-eslint-warnings-badge/-/git-badger-eslint-warnings-badge-0.4.1.tgz#f8cd3658394a8b52e8fc8ff4967d3b7b33bde7b5"
+
+git-badger-flow-coverage-badge@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-flow-coverage-badge/-/git-badger-flow-coverage-badge-0.4.1.tgz#92b4f9e280e8033d4c98beb7d03b6b0932e3b552"
+
+git-badger-leveldown-store@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-leveldown-store/-/git-badger-leveldown-store-0.4.1.tgz#6d34fda3955eb31797ea28b6431542295ce8af2d"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2360,9 +2354,9 @@ git-badger-leveldown-store@^0.3.2:
     mysql "^2.15.0"
     yaml "^0.3.0"
 
-git-badger-mysql-store@^0.3.1, git-badger-mysql-store@^0.3.2:
-  version "0.3.1"
-  resolved "http://sinopia.app.s/git-badger-mysql-store/-/git-badger-mysql-store-0.3.1.tgz#878dc94101a8257a53538945490bf9abdc0a96c6"
+git-badger-mysql-store@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-mysql-store/-/git-badger-mysql-store-0.4.1.tgz#414d584158a5c0facc13f088c76f714c3e8aa556"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2371,11 +2365,19 @@ git-badger-mysql-store@^0.3.1, git-badger-mysql-store@^0.3.2:
     body-parser "^1.18.2"
     command-line-args "^4.0.7"
     express "^4.16.2"
-    git-badger-core "^0.3.1"
+    git-badger-core "^0.4.1"
     leveldown "^2.0.0"
     levelup "^2.0.0"
     mysql "^2.15.0"
     yaml "^0.3.0"
+
+git-badger-test-coverage-badge@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-test-coverage-badge/-/git-badger-test-coverage-badge-0.4.1.tgz#d72a2efe242e0f468d06ec936f07c68a1d305aeb"
+
+git-badger-vue-component-decorator-badge@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/git-badger-vue-component-decorator-badge/-/git-badger-vue-component-decorator-badge-0.4.1.tgz#f990abe47ac05ca89c97be9b3ab0e200d6ccec73"
 
 git-raw-commits@^1.2.0:
   version "1.2.0"

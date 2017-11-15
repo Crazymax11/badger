@@ -42,10 +42,7 @@ html
                 const project = document.querySelector('#get [name="project"]').value;
                 const badge = document.querySelector('#get [name="badge"]').value;
                 console.log('GET', project, badge);
-                fetch(`/badges/${badge}/${project}`)
-                .then(res => res.blob())
-                .then(url => document.querySelector('#get img').src = URL.createObjectURL(url))
-                .catch(console.log)
+                document.querySelector('#get img').src = `/badges/${badge}/${project}`;
             });
         each badge in badges
             section
