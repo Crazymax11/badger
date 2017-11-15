@@ -1,6 +1,6 @@
 {
   "name": "git-badger-leveldown-store",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "",
   "main": "dist/app.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.3.1",
     "flow-bin": "^0.57.3",
-    "git-badger-core": "^0.5.0",
+    "git-badger-core": "^0.6.0",
     "js-yaml": "^3.10.0",
     "lerna": "^2.4.0",
     "mocha": "^4.0.1",
