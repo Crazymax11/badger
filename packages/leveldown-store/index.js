@@ -99,6 +99,43 @@ class LeveldownStore implements Store {
     };
   }
 
+  async getLastN(
+    count: number,
+    project: Project,
+    subject: Subject
+  ): Promise<StoreReturn> {
+    if (typeof count !== 'number') {
+      throw new Error('count must be a number');
+    }
+    if (typeof subject !== 'string') {
+      throw new Error('subject must be a string');
+    }
+
+    if (typeof project !== 'string') {
+      throw new Error('project must be a string');
+    }
+
+    const key = getKey(project, subject);
+    const history = await getFromLevelDB(this.db, key);
+    const records = history.slice(-count);
+
+    if (!records.length) {
+      return [
+        {
+          status: 'none',
+          subject,
+          time: 0
+        }
+      ];
+    }
+
+    return records.map(record => ({
+      status: record.status,
+      subject,
+      time: record.time
+    }));
+  }
+
   /**
    * Open levelDB
    */

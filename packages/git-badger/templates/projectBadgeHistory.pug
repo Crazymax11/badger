@@ -1,0 +1,9 @@
+html
+    head
+    body
+        h1= project
+        each timedBadge in timedBadges
+            img(src=''+timedBadge.link)
+            span  timestamp: 
+            span= timedBadge.time
+            br

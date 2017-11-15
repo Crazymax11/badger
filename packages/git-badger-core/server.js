@@ -51,6 +51,33 @@ export default function createApp(
     );
   });
 
+  app.get('/badges/:badgeType/history/:project', async (req, res) => {
+    const project = req.params.project;
+    const badgeType = req.params.badgeType;
+    const records = await store.getLastN(1000, project, badgeType);
+    const timedBadges = records.map(record => {
+      const badge = typesMap[badgeType].create(record.status);
+      return {
+        link: getLink(badge),
+        time: record.time
+      };
+    });
+    res.render(
+      'projectBadgeHistory',
+      {
+        project,
+        timedBadges
+      },
+      (err, html) => {
+        if (err) {
+          console.error(err);
+          return res.send(err);
+        }
+        return res.send(html);
+      }
+    );
+  });
+
   app.post('/badges/:badgeType/:project', async (req, res) => {
     const status = req.body.status;
     const badgeType = req.params.badgeType;

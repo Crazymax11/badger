@@ -14,6 +14,12 @@ export type StoreRecord = {
   status: Status
 };
 
+export type HistoryRecord = {
+  subject: Subject,
+  status: Status,
+  time: Time
+};
+
 export type StoreStatus = {
   records: number,
   projects: number,
@@ -41,6 +47,11 @@ export interface Store {
   ): Promise<StoreReturn>;
   getLast(project: Project, subject: Subject): Promise<StoreReturn>;
   getStatus(Project, Subject): Promise<StoreStatus>;
+  getLastN(
+    counet: number,
+    project: Project,
+    subject: Subject
+  ): Promise<HistoryRecord[]>;
 }
 
 type Color =
