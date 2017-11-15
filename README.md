@@ -5,6 +5,7 @@ Git badger is a tool which uses shieldsio to provide you a way to make custom ba
 Git badger provides a simple rest interface:
 * **POST** `/badges/:badge/:project` with body `{status: 'some status'}` creates a new record to your `project` about current `status` of `badge`.
 * **GET** `/badges/:badge/:project` redirects to [shields.io](https://shields.io) svg badge with last `status` of `badge` for your `project`
+* **GET** `/badges/:project` shows all badges for project
 * **GET** `/status` to get current status of system. Returns status of application and status of store.
 * **GET** `/status/:badge/:project` returns store status for given badge and project
 * **GET** `/status/:badge` returns store status for given badge

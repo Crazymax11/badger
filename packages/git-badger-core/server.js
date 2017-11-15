@@ -26,6 +26,31 @@ export default function createApp(
     return res.redirect(badge);
   });
 
+  app.get('/badges/:project', async (req, res) => {
+    const project = req.params.project;
+    const links = await Promise.all(
+      Object.entries(typesMap).map(async ([badgeType, badgeHandler]) => {
+        const lastValue = await store.getLast(project, badgeType);
+        const badgeData = badgeHandler.create(lastValue.status);
+        return getLink(badgeData);
+      })
+    );
+    res.render(
+      'projectBadges',
+      {
+        project,
+        links
+      },
+      (err, html) => {
+        if (err) {
+          console.error(err);
+          return res.send(err);
+        }
+        return res.send(html);
+      }
+    );
+  });
+
   app.post('/badges/:badgeType/:project', async (req, res) => {
     const status = req.body.status;
     const badgeType = req.params.badgeType;
