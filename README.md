@@ -92,7 +92,7 @@ Publish `lerna publish`
     - [x] Create template to show badges with description
     - [x] Render template with all available badges
 
-- [ ] Show badge/project status history
+- [x] Show badge/project status history
 - [x] Show page with all available badges
 - [x] Make git-badger package which contains app and depends on git-badger-core
 - [x] Make Docker image
