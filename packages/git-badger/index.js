@@ -1,19 +1,39 @@
 // @flow
-import Store from 'git-badger-leveldown-store';
-import server from 'git-badger-core';
+const cmdArgs = require('command-line-args');
+const Store = require('git-badger-leveldown-store').default;
+const server = require('git-badger-core').default;
 
-import eslintErrorsBadge from 'git-badger-eslint-errors-badge';
-import eslintWarningsBadge from 'git-badger-eslint-warnings-badge';
-import flowCoverageBadge from 'git-badger-flow-coverage-badge';
-import testCoverageBadge from 'git-badger-test-coverage-badge';
-import vueComponentDecoratorBadge from 'git-badger-vue-component-decorator-badge';
+const options = cmdArgs([
+  {
+    name: 'badges',
+    alias: 'b',
+    type: String,
+    multiple: true,
+    // provided with this package
+    defaultValue: [
+      'eslint-errors',
+      'eslint-warnings',
+      'flow-coverage',
+      'test-coverage',
+      'vue-component-decorator'
+    ]
+  }
+]);
 
-const badges = {
-  'eslint-errors': eslintErrorsBadge,
-  'eslint-warnings': eslintWarningsBadge,
-  'flow-coverage': flowCoverageBadge,
-  'test-coverage': testCoverageBadge,
-  'vue-component-decorator': vueComponentDecoratorBadge
-};
+const badges = options.badges.reduce((acc, badge) => {
+  try {
+    // trying to get badge creator by mask
+    // eslint-disable-next-line
+    acc[badge] = require(`git-badger-${badge}-badge`);
+  } catch (err) {
+    // if didn't find then trying to require as is
+    if (err.message.contains('Cannot find')) {
+      // eslint-disable-next-line
+      acc[badge] = require(badge);
+    }
+  }
+
+  return acc;
+}, {});
 
 server(80, new Store('./db'), badges);

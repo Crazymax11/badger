@@ -12,6 +12,56 @@ Git badger provides a simple rest interface:
 
 The main difference from other badge services is configurability. It has built-in badges, but if you want a specific badge you can make custom badge creator. For example you want to count `TODO`s comments in your repo, when you need to make `todo-badge-creator` - javascript function that transforms `status` to object with props `color`, `subject`, `status`. Now you can use badge creator with git badger to show your badge in any repo.
 [![Eslint Errors](http://localhost/badges/eslint-errors/test)](http://localhost/badges/eslint-errors/test)
+
+## Creating your own badge
+
+### About badge
+Badge is an object with next structure
+
+```
+{
+  color: Color, // string (currently one of 'brightgreen', 'green', 'yellowgreen', 'orange', 'red', 'lightgrey', 'blue')
+  status: Status, // any string
+  subject: Subject // any string
+}
+```
+
+Badges created by badge creator.
+Badge creator has next structure 
+```
+{
+  name: string, // human readable string
+  create(status: Status): Badge, // badge factory - all logic is here
+  examples: Status[], // examples to show peoples what your badge can do
+  description: string // humad readable string
+}
+```
+
+### How to create
+
+You can create badge by yourself or you can use [yeoman badge generator](http://yeoman.io/)
+```
+npm i -g yo
+npm i -g generator-git-badger-badge
+mkdir my-badge
+cd my-badge
+yo git-badger-badge
+```
+
+Here we install yeoman, creating new directory for our badge and using yeoman to create badge creator package. It will create skeleton with sample badge creator and package.json. All you need is to rewrite badge creator and push it to npm.
+
+### How to use
+
+git-badger has an cli option `badges`. For example you created badge with name `my-badge` and created a package `git-badger-my-badge-badge`. Then you can do next
+```
+npm i git-badger-my-badge-badge
+git-badger --badges my-badge
+```
+
+If git-badger can't require your badge by mask `git-badger-%badge-name%-badge` it will try `require(%badge-name%)`
+
+Now open git-badger in browser and check your badge!
+
 ## TODO
 
 - [x] Show list of available badges on root url with examples and maybe description.
