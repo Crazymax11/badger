@@ -10,7 +10,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register packages/**/*spec.js",
     "flow": "flow check",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "node packages/git-badger/index.js"
   },
   "author": "Max Sosnov",
   "license": "ISC",
