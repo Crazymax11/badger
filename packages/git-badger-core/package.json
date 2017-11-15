@@ -1,6 +1,6 @@
 {
   "name": "git-badger-core",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "",
   "main": "dist/app.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "command-line-args": "^4.0.7",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "git-badger-mysql-store": "^0.4.1",
+    "git-badger-mysql-store": "^0.4.2",
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
@@ -36,7 +36,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.3.1",
     "flow-bin": "^0.57.3",
-    "git-badger-leveldown-store": "^0.4.1",
+    "git-badger-leveldown-store": "^0.4.2",
     "js-yaml": "^3.10.0",
     "lerna": "^2.4.0",
     "mocha": "^4.0.1",
