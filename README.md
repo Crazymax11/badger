@@ -77,7 +77,7 @@ Now open git-badger in browser and check your badge!
 - [x] Show page with all available badges
 - [x] Make git-badger package which contains app and depends on git-badger-core
 - [x] Make Docker image
-- [ ] Describe git-badge creating guide
-- [ ] Provide a way to use custom badges, store in git-badger app
+- [x] Describe git-badge creating guide
+- [x] Provide a way to use custom badges, store in git-badger app
 - [ ] Describe a way to use custom badges and store in git-badger app
 - [ ] Describe store creating guide 
