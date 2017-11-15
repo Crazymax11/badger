@@ -62,6 +62,10 @@ If git-badger can't require your badge by mask `git-badger-%badge-name%-badge` i
 
 Now open git-badger in browser and check your badge!
 
+## Docker
+
+Dockerfile is [here](./packages/git-badger/Dockerfile). Feel free to fork.
+
 ## TODO
 
 - [x] Show list of available badges on root url with examples and maybe description.
@@ -72,7 +76,6 @@ Now open git-badger in browser and check your badge!
     - [x] Create template to show badges with description
     - [x] Render template with all available badges
 
-
 - [ ] Show badge/project status history
 - [x] Show page with all available badges
 - [x] Make git-badger package which contains app and depends on git-badger-core
@@ -81,3 +84,5 @@ Now open git-badger in browser and check your badge!
 - [x] Provide a way to use custom badges, store in git-badger app
 - [ ] Describe a way to use custom badges and store in git-badger app
 - [ ] Describe store creating guide 
+- [ ] Describe docker guide
+- [ ] Upload docker image to dockerhub
