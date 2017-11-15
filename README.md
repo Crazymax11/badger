@@ -102,3 +102,5 @@ Publish `lerna publish`
 - [ ] Describe store creating guide 
 - [ ] Describe docker guide
 - [ ] Upload docker image to dockerhub
+- [ ] Refactor server code
+- [ ] Create abstract store for OOP guys
