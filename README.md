@@ -66,10 +66,24 @@ Now open git-badger in browser and check your badge!
 
 Dockerfile is [here](./packages/git-badger/Dockerfile). Feel free to fork.
 
+## Contributing guide
+
+* `git clone git@github.com:Crazymax11/badger.git` clone the repository
+* `npm i -g lerna` install [lerna](https://github.com/lerna/lerna), this is monorepo
+* `lerna bootstrap` bootstrap lerna
+* `lerna run build` build some of libs
+* `npm start` to start server, it will start web server so you might need ot use sudo for this
+
+We are using [commitizen](https://github.com/commitizen/cz-cli) with [cz-emoji format](https://github.com/ngryman/cz-emoji)
+* `npm i -g commitizen cz-emoji` install commitizen
+* `git-cz` commit!
+
+Publish `lerna publish`
+
 ## TODO
 
 - [x] Show list of available badges on root url with examples and maybe description.
-    - [x] Declare abstract badger type with next public API
+    - [x]( Declare abstract badger type with next public API
         - [x] create(status): badgeMeta
         - [x] examples: [status]
         - [x] description: string - short text about badge goal
