@@ -96,6 +96,43 @@ export default function createApp(
     return res.status(400).json(Object.keys(typesMap));
   });
 
+  app.get('/status', async (req, res) => {
+    try {
+      const status = await store.getStatus();
+      res.json(status);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
+  app.get('/status/:badgeType', async (req, res) => {
+    try {
+      const status = await store.getStatus(undefined, req.params.badgeType);
+      res.json(status);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+  app.get('/status/projects/:project', async (req, res) => {
+    try {
+      const status = await store.getStatus(req.params.project, undefined);
+      res.json(status);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+  app.get('/status/:badgeType/:project', async (req, res) => {
+    try {
+      const status = await store.getStatus(
+        req.params.project,
+        req.params.badgeType
+      );
+      res.json(status);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
   app.get('/', (req, res) => {
     res.render(
       'index',
