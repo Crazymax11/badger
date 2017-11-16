@@ -7,7 +7,7 @@
     "test": "exit 0",
     "start": "node index.js"
   },
-  "bin": "bin/index.js",
+  "bin": "bin/git-badger.js",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
