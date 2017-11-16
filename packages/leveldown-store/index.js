@@ -10,13 +10,14 @@ import type {
   Subject,
   Status,
   StoreRecord,
-  StoreStatus
+  StoreStatus,
+  HistoryRecord
 } from 'git-badger-core/types.js';
 
 class LeveldownStore implements Store {
   db: any;
   dbpath: string;
-  constructor(dbpath: string) {
+  constructor({ dbpath }: { dbpath: string }) {
     this.dbpath = dbpath;
     this.db = levelup(leveldown(dbpath));
   }
@@ -103,7 +104,7 @@ class LeveldownStore implements Store {
     count: number,
     project: Project,
     subject: Subject
-  ): Promise<StoreReturn> {
+  ): Promise<HistoryRecord[]> {
     if (typeof count !== 'number') {
       throw new Error('count must be a number');
     }
@@ -152,10 +153,10 @@ class LeveldownStore implements Store {
 
   /**
    * Get status of db
-   * @param {Project} project
-   * @param {Subject} subject
+   * @param {?Project} project
+   * @param {?Subject} subject
    */
-  getStatus(project: Project, subject: Subject): Promise<StoreStatus> {
+  getStatus(project: ?Project, subject: ?Subject): Promise<StoreStatus> {
     return getDbStatus(this.db, project, subject);
   }
 }

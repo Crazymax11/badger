@@ -9,18 +9,19 @@ import type { Store, BadgeCreator } from './types.js';
 export default function createApp(
   port: number,
   store: Store,
-  typesMap: { [string]: BadgeCreator }
+  badges: $Exact<{ [string]: BadgeCreator }>,
+  templates: string
 ) {
   const app = express();
   app.set('view engine', 'pug');
-  app.set('views', './templates');
+  app.set('views', templates);
   app.use(bodyParser.json());
   app.use(cors());
   app.get('/badges/:badgeType/:project', async (req, res) => {
     const badgeType = req.params.badgeType;
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
-    const badgeHandler = typesMap[badgeType];
+    const badgeHandler = badges[badgeType];
     const badgeData = badgeHandler.create(lastValue.status);
     const badge = getLink(badgeData);
     return res.redirect(badge);
@@ -29,8 +30,9 @@ export default function createApp(
   app.get('/badges/:project', async (req, res) => {
     const project = req.params.project;
     const links = await Promise.all(
-      Object.entries(typesMap).map(async ([badgeType, badgeHandler]) => {
+      Object.entries(badges).map(async ([badgeType, badgeHandler]) => {
         const lastValue = await store.getLast(project, badgeType);
+        // $ExpectError flow thinks that value is mixed type
         const badgeData = badgeHandler.create(lastValue.status);
         return getLink(badgeData);
       })
@@ -56,7 +58,7 @@ export default function createApp(
     const badgeType = req.params.badgeType;
     const records = await store.getLastN(1000, project, badgeType);
     const timedBadges = records.map(record => {
-      const badge = typesMap[badgeType].create(record.status);
+      const badge = badges[badgeType].create(record.status);
       return {
         link: getLink(badge),
         time: record.time
@@ -86,14 +88,14 @@ export default function createApp(
       return res.status(400).send('cant get status from body');
     }
 
-    const badgeHandler = typesMap[req.params.badgeType];
+    const badgeHandler = badges[req.params.badgeType];
     await store.store(project, badgeType, status, Date.now());
     if (badgeHandler) {
       const meta = badgeHandler.create(status);
       const badge = getLink(meta);
       return res.send(badge);
     }
-    return res.status(400).json(Object.keys(typesMap));
+    return res.status(400).json(Object.keys(badges));
   });
 
   app.get('/status', async (req, res) => {
@@ -137,7 +139,7 @@ export default function createApp(
     res.render(
       'index',
       {
-        badges: typesMap,
+        badges,
         getLink
       },
       (err, html) => {

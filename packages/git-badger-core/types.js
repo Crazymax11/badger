@@ -46,7 +46,7 @@ export interface Store {
     time: Time
   ): Promise<StoreReturn>;
   getLast(project: Project, subject: Subject): Promise<StoreReturn>;
-  getStatus(Project, Subject): Promise<StoreStatus>;
+  getStatus(?Project, ?Subject): Promise<StoreStatus>;
   getLastN(
     counet: number,
     project: Project,

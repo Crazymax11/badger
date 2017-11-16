@@ -1,9 +1,11 @@
-mysql:
-  host: localhost
-  user: badger
-  password: badger
-  db: badger
-
-storeType: mysql
-server:
-  port: 8080
+store:
+  name: leveldown
+  dbpath: ./db
+port: 80
+templates: './templates'
+badges: 
+  - 'eslint-errors'
+  - 'eslint-warnings'
+  - 'flow-coverage'
+  - 'test-coverage'
+  - 'vue-component-decorator'
