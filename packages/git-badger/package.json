@@ -26,8 +26,7 @@
     "git-badger-vue-component-decorator-badge": "^0.4.1",
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
-    "mysql": "^2.15.0",
-    "yaml": "^0.3.0"
+    "mysql": "^2.15.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",

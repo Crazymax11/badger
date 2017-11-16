@@ -2326,9 +2326,9 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-git-badger-core@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/git-badger-core/-/git-badger-core-0.6.0.tgz#63823564d235d4e059ba9f11c5d506cff0ff2cb8"
+git-badger-core@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/git-badger-core/-/git-badger-core-0.6.1.tgz#f06b3be3ba61955ac009c7bf97adfb7d9455644e"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2338,7 +2338,7 @@ git-badger-core@^0.6.0:
     command-line-args "^4.0.7"
     cors "^2.8.4"
     express "^4.16.2"
-    git-badger-mysql-store "^0.6.0"
+    git-badger-mysql-store "^0.6.1"
     leveldown "^2.0.0"
     levelup "^2.0.0"
     mysql "^2.15.0"
@@ -2357,9 +2357,9 @@ git-badger-flow-coverage-badge@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/git-badger-flow-coverage-badge/-/git-badger-flow-coverage-badge-0.4.1.tgz#92b4f9e280e8033d4c98beb7d03b6b0932e3b552"
 
-git-badger-leveldown-store@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/git-badger-leveldown-store/-/git-badger-leveldown-store-0.6.0.tgz#7bd8279e6ba22b0d4496e7b8a9b9477a27a7cefe"
+git-badger-leveldown-store@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/git-badger-leveldown-store/-/git-badger-leveldown-store-0.6.1.tgz#fe22c432da64bcf11186551f19aad3ccbf8c8d2b"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2373,9 +2373,9 @@ git-badger-leveldown-store@^0.6.0:
     mysql "^2.15.0"
     yaml "^0.3.0"
 
-git-badger-mysql-store@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/git-badger-mysql-store/-/git-badger-mysql-store-0.6.0.tgz#ccc3ab9a7e81ebd5ed40ded6bcd6bbdc46a8ab53"
+git-badger-mysql-store@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/git-badger-mysql-store/-/git-badger-mysql-store-0.6.1.tgz#11f54b879192c0c2afe84a1497c828d79bfb798e"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2384,7 +2384,7 @@ git-badger-mysql-store@^0.6.0:
     body-parser "^1.18.2"
     command-line-args "^4.0.7"
     express "^4.16.2"
-    git-badger-core "^0.6.0"
+    git-badger-core "^0.6.1"
     leveldown "^2.0.0"
     levelup "^2.0.0"
     mysql "^2.15.0"
