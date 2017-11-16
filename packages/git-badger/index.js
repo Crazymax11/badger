@@ -78,7 +78,7 @@ if (cliOptions.help) {
 }
 
 if (cliOptions.store) {
-  if (cliOptions.store.contains('?')) {
+  if (cliOptions.store.includes('?')) {
     const storeName = cliOptions.store.split('?')[0];
     const storeOptions = cliOptions.store
       .split('?')[1]
@@ -127,7 +127,7 @@ function readBadges(badges = defaultOptions.badges) {
       acc[badge] = require(`git-badger-${badge}-badge`);
     } catch (err) {
       // if didn't find then trying to require as is
-      if (err.message.contains('Cannot find')) {
+      if (err.message.includes('Cannot find')) {
         // eslint-disable-next-line
         acc[badge] = require(badge);
       }
@@ -145,7 +145,7 @@ function createStore(storeConfig = defaultOptions.store) {
     store = require(`git-badger-${storeName}-store`);
   } catch (err) {
     // if didn't find then trying to require as is
-    if (err.message.contains('Cannot find')) {
+    if (err.message.includes('Cannot find')) {
       // eslint-disable-next-line
       store = require(storeName);
     }
