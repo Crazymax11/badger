@@ -1,0 +1,12 @@
+{
+    "name": "git-badger-<%= name %>-badge",
+    "version": "1.0.0",
+    "description": "<%= description %>",
+    "main": "index.js",
+    "keywords": [
+      "git-badger-store"
+    ],
+    "author": "",
+    "license": "ISC"
+  }
+  

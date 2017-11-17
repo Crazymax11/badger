@@ -108,6 +108,6 @@ Publish `lerna publish`
 - [ ] Refactor server code
 - [ ] Create abstract store for OOP guys
 - [ ] Provide a way to require badge and store as is
-- [ ] Make badges for this repo!
+- [x] Make badges for this repo!
 - [ ] Rewrite README.md
 - [ ] Make graph in history instead of two columns
