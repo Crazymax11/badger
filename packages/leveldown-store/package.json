@@ -1,7 +1,7 @@
 {
   "name": "git-badger-leveldown-store",
   "version": "0.7.1",
-  "description": "",
+  "description": "Leveldown store for git-badger",
   "main": "dist/app.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register test.spec.js spec.js",
