@@ -98,9 +98,13 @@ Publish `lerna publish`
 - [x] Make Docker image
 - [x] Describe git-badge creating guide
 - [x] Provide a way to use custom badges, store in git-badger app
-- [ ] Describe a way to use custom badges and store in git-badger app
+- [x] Describe a way to use custom badges and store in git-badger app
 - [ ] Describe store creating guide 
 - [ ] Describe docker guide
 - [ ] Upload docker image to dockerhub
 - [ ] Refactor server code
 - [ ] Create abstract store for OOP guys
+- [ ] Provide a way to require badge and store as is
+- [ ] Make badges for this repo!
+- [ ] Rewrite README.md
+- [ ] Make graph in history instead of two columns

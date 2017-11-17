@@ -11,7 +11,8 @@
     "test": "mocha --compilers js:babel-core/register packages/**/*spec.js",
     "flow": "flow check",
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "cd packages/git-badger && node index.js"
+    "start": "cd packages/git-badger && node index.js",
+    "prepublish": "echo KEK!"
   },
   "author": "Max Sosnov",
   "license": "ISC",

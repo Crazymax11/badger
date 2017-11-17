@@ -5,7 +5,8 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register test.spec.js spec.js",
-    "build": "webpack"
+    "build": "webpack",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
