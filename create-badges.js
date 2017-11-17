@@ -1,3 +1,4 @@
+const fs = require('fs');
 const createLink = require('./packages/shields-io-link');
 
 const badges = {
@@ -15,10 +16,11 @@ const links = {
     'eslint-warnings': createLink(badges['eslint-warnings'].create(String(report.warningCount)))
 }
 
-const fs = require('fs');
+
 let mdContent = fs.readFileSync('README.md', 'utf-8');
-mdContent = mdContent.replace(/!\[eslint-errors\]\(.*\)/, '![eslint-errors]('+links['eslint-errors']+')');
-mdContent = mdContent.replace(/!\[eslint-warnings\]\(.*\)/, '![eslint-warnings]('+links['eslint-warnings']+')');
+mdContent = Object.entries(links).reduce((md, [badge, link]) => 
+    md.replace(new RegExp('!\\['+badge+'\\]\\(.*\\)'), '![' + badge + '](' + link + ')')
+, mdContent)
 
 fs.writeFileSync('README.md', mdContent, 'utf-8');
 
