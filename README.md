@@ -1,7 +1,7 @@
 # git-badger
 
-![eslint-errors]()
-![eslint-warnings]()
+![eslint-errors](https://img.shields.io/badge/eslint--errors-297-red.svg)
+![eslint-warnings](https://img.shields.io/badge/eslint--warnings-9-yellow.svg)
 
 Git badger is a tool which uses shieldsio to provide you a way to make custom badges for your git with history.
 
