@@ -18,7 +18,8 @@ const defaultOptions = {
   },
   config: 'config.yml',
   port: 80,
-  templates: './templates'
+  templates: './templates',
+  implicit: 'none'
 };
 
 const optionsDefinition = [
@@ -28,14 +29,14 @@ const optionsDefinition = [
     type: String,
     multiple: true,
     description:
-      'space separated list of badges. Will be required first as git-badger-%badgename%-badge, if it fails it will be required as is'
+      'space separated list of badges. Will be required first as git-badger-%badgename%-badge.'
   },
   {
     name: 'store',
     alias: 's',
     type: String,
     description:
-      'store name. Will be required first as git-badger-%storename%-store, but if it fails it will be required as is. All options must be provided in query format. Example: storename?password=1234&host=myhost'
+      'store name. Will be required first as git-badger-%storename%-store. All options must be provided in query format. Example: storename?password=1234&host=myhost'
   },
   {
     // path to config file. Any option found in CLI is high priorited than found in config
@@ -121,18 +122,12 @@ function readConfig(configpath = defaultOptions.config) {
 
 function readBadges(badges = defaultOptions.badges) {
   return badges.reduce((acc, badge) => {
-    try {
-      // trying to get badge creator by mask
-      // eslint-disable-next-line
-      acc[badge] = require(`git-badger-${badge}-badge`);
-    } catch (err) {
-      // if didn't find then trying to require as is
-      if (err.message.includes('Cannot find')) {
-        // eslint-disable-next-line
-        acc[badge] = require(badge);
-      }
-    }
+    // trying to get badge creator by mask
+    // eslint-disable-next-line
+    acc[badge] = require(`git-badger-${badge}-badge`);
 
+    // If badge exported as es6 module
+    acc[badge] = acc[badge].default || acc[badge];
     return acc;
   }, {});
 }
@@ -140,16 +135,8 @@ function readBadges(badges = defaultOptions.badges) {
 function createStore(storeConfig = defaultOptions.store) {
   let store = '';
   const { name: storeName, ...storeArgs } = storeConfig;
-  try {
-    // eslint-disable-next-line
-    store = require(`git-badger-${storeName}-store`);
-  } catch (err) {
-    // if didn't find then trying to require as is
-    if (err.message.includes('Cannot find')) {
-      // eslint-disable-next-line
-      store = require(storeName);
-    }
-  }
+  // eslint-disable-next-line
+  store = require(`git-badger-${storeName}-store`);
 
   // If store exported as es6 module
   store = store.default || store;
