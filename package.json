@@ -12,7 +12,7 @@
     "flow": "flow check",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cd packages/git-badger && node index.js",
-    "prepublish": "echo KEK!"
+    "create-badges": "node create-badges.js"
   },
   "author": "Max Sosnov",
   "license": "ISC",

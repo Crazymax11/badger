@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import getLink from './badger.js';
+import getLink from 'shields-io-link';
 import type { Store, BadgeCreator } from './types.js';
 
 export default function createApp(
