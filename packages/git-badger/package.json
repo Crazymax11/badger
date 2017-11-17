@@ -1,6 +1,6 @@
 {
   "name": "git-badger",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,11 +17,11 @@
     "command-line-args": "^4.0.7",
     "command-line-usage": "^4.0.1",
     "express": "^4.16.2",
-    "git-badger-core": "^0.7.0",
+    "git-badger-core": "^0.7.1",
     "git-badger-eslint-errors-badge": "^0.7.0",
     "git-badger-eslint-warnings-badge": "^0.7.0",
     "git-badger-flow-coverage-badge": "^0.7.0",
-    "git-badger-leveldown-store": "^0.7.0",
+    "git-badger-leveldown-store": "^0.7.1",
     "git-badger-test-coverage-badge": "^0.7.0",
     "git-badger-vue-component-decorator-badge": "^0.7.0",
     "js-yaml": "^3.10.0",
