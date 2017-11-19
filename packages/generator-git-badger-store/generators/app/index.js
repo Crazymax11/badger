@@ -44,7 +44,11 @@ module.exports = class extends Generator {
     );
     this.fs.copyTpl(
       this.templatePath('spec.js'),
-      this.destinationPath('spec.js')
+      this.destinationPath('spec.js'),
+      {
+        name: this.name,
+        description: this.description
+      }
     );
 
     this.npmInstall(['chai', 'mocha', 'git-badger-core']);
