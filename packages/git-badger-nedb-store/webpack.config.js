@@ -10,8 +10,7 @@ module.exports = {
   externals: [nodeExternals()],
   target: 'node',
   entry: {
-    app: path.resolve('server.js'),
-    storeTest: path.resolve('store-tests.js')
+    index: path.resolve('index.js')
   },
   module: {
     rules: [

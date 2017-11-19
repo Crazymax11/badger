@@ -1,4 +1,5 @@
-// @flow  
+// @flow
+import DataStore from 'nedb';
 
 import type {
   Store,
@@ -12,11 +13,18 @@ import type {
   HistoryRecord
 } from 'git-badger-core/types.js';
 
-/**
- * <%= description %>
- */
-class <%= name %> implements Store {
-  constructor() {}
+class NeDBStore implements Store {
+  db: any;
+  constructor(path: ?string) {
+    if (path) {
+      this.db = new DataStore({
+        filename: path,
+        autoload: true
+      });
+    } else {
+      this.db = new DataStore();
+    }
+  }
 
   /**
    * Stores record to something
@@ -48,7 +56,17 @@ class <%= name %> implements Store {
       throw new Error('subject must be a string');
     }
 
-    // your logic
+    await new Promise((resolve, reject) =>
+      this.db.insert(
+        {
+          project,
+          time,
+          subject,
+          status
+        },
+        (err, doc) => (err ? reject(err) : resolve(doc))
+      )
+    );
 
     return {
       subject,
@@ -62,7 +80,7 @@ class <%= name %> implements Store {
    * @param {Project} project 
    * @param {Subject} subject 
    */
-  async getLast(project: Project, subject: Subject ): Promise<StoreReturn> {
+  async getLast(project: Project, subject: Subject): Promise<StoreReturn> {
     if (typeof subject !== 'string') {
       throw new Error('subject must be a string');
     }
@@ -71,11 +89,16 @@ class <%= name %> implements Store {
       throw new Error('project must be a string');
     }
 
-    // your logic instead of this
-    const record = {
-        status: 'none',
-        subject
-      };
+    const record =
+      (await new Promise((resolve, reject) =>
+        this.db
+          .findOne({
+            subject,
+            project
+          })
+          .sort({ time: -1 })
+          .exec((err, doc) => (err ? reject(err) : resolve(doc)))
+      )) || undefined;
 
     if (typeof record === 'undefined') {
       return {
@@ -107,13 +130,16 @@ class <%= name %> implements Store {
     }
 
     // your logic here instead of this
-    const records = [
-        {
-          status: 'none',
+    const records = await new Promise((resolve, reject) =>
+      this.db
+        .find({
           subject,
-          time: 0
-        }
-      ];
+          project
+        })
+        .sort({ time: -1 })
+        .limit(count)
+        .exec((err, docs) => (err ? reject(err) : resolve(docs)))
+    );
 
     if (!records.length) {
       return [
@@ -137,9 +163,32 @@ class <%= name %> implements Store {
    * @param {?Project} project
    * @param {?Subject} subject
    */
-  getStatus(projec: ?Project , subjec: ?Subject): Promise<StoreStatus>  {
+  async getStatus(project: ?Project, subject: ?Subject): Promise<StoreStatus> {
     // your logic
+    const records = await new Promise((resolve, reject) =>
+      this.db
+        .find({
+          subject,
+          project
+        })
+        .sort({ time: -1 })
+        .exec((err, docs) => (err ? reject(err) : resolve(docs)))
+    );
+
+    const projectsSet = new Set();
+    const subjectsSet = new Set();
+    records.forEach(record => {
+      projectsSet.add(record.project);
+      subjectsSet.add(record.subject);
+    });
+
+    return {
+      records: records.length,
+      subjects: subjectsSet.size,
+      projects: projectsSet.size,
+      status: 'ok'
+    };
   }
 }
 
-export default <%= name %>;
+export default NeDBStore;

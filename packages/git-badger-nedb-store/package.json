@@ -1,0 +1,31 @@
+{
+  "name": "git-badger-nedv-store",
+  "version": "1.0.0",
+  "description": "nedv",
+  "main": "dist/index.js",
+  "keywords": [
+    "git-badger-store"
+  ],
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register spec.js",
+    "build": "NODE_ENV=production webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "flow-bin": "^0.59.0",
+    "git-badger-core": "^0.7.4",
+    "nedb": "^1.8.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.11.0",
+    "mocha": "^4.0.1",
+    "webpack": "^3.8.1",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
