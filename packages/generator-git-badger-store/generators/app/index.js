@@ -52,7 +52,8 @@ module.exports = class extends Generator {
       }
     );
 
-    this.npmInstall(['chai', 'mocha', 'git-badger-core']);
-    if (this.flow) this.npmInstall(['flow-bin']);
+    const deps = ['chai', 'mocha', 'git-badger-core'];
+    if (this.flow) deps.push('flow-bing');
+    this.npmInstall(deps);
   }
 };
