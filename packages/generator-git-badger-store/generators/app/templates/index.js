@@ -1,4 +1,20 @@
-class <%= name %> {
+<% if (flow) { %> // @flow  
+
+import type {
+  Store,
+  StoreReturn,
+  Time,
+  Project,
+  Subject,
+  Status,
+  StoreRecord,
+  StoreStatus,
+  HistoryRecord
+} from 'git-badger-core/types.js';
+
+<% } %>
+
+class <%= name %>  <% if (flow) { %> implements Store  <% } %>{
   constructor() {}
 
   /**
@@ -10,11 +26,11 @@ class <%= name %> {
    * @param {Time} time
    */
   async store(
-    project,
-    subject,
-    status,
-    time
-  ) {
+    project<% if (flow) { %>: Project <% } %>,
+    subject<% if (flow) { %>: Subject <% } %>,
+    status<% if (flow) { %>: Status <% } %>,
+    time<% if (flow) { %>: Time <% } %>
+  )<% if (flow) { %>: Promise<StoreReturn> <% } %> {
     if (typeof time !== 'number') {
       throw new Error('time must be a number');
     }
@@ -45,7 +61,7 @@ class <%= name %> {
    * @param {Project} project 
    * @param {Subject} subject 
    */
-  async getLast(project, subject) {
+  async getLast(project <% if (flow) { %>: Project <% } %> , subject<% if (flow) { %>: Subject <% } %> ): <% if (flow) { %> Promise<StoreReturn> <% } %> {
     if (typeof subject !== 'string') {
       throw new Error('subject must be a string');
     }
@@ -54,7 +70,11 @@ class <%= name %> {
       throw new Error('project must be a string');
     }
 
-    const record = // your logic
+    // your logic instead of this
+    const record = {
+        status: 'none',
+        subject
+      };
 
     if (typeof record === 'undefined') {
       return {
@@ -70,10 +90,10 @@ class <%= name %> {
   }
 
   async getLastN(
-    count,
-    project,
-    subject
-  ) {
+    count<% if (flow) { %>: number<% } %>,
+    project<% if (flow) { %>: Project<% } %>,
+    subject<% if (flow) { %>: Subject<% } %>
+  )<% if (flow) { %>: Promise<HistoryRecord[]> <% } %>{
     if (typeof count !== 'number') {
       throw new Error('count must be a number');
     }
@@ -85,7 +105,14 @@ class <%= name %> {
       throw new Error('project must be a string');
     }
 
-    const records = // your logic
+    // your logic here instead of this
+    const records = [
+        {
+          status: 'none',
+          subject,
+          time: 0
+        }
+      ];
 
     if (!records.length) {
       return [
@@ -109,7 +136,7 @@ class <%= name %> {
    * @param {?Project} project
    * @param {?Subject} subject
    */
-  getStatus(project, subject) {
+  getStatus(project<% if (flow) { %>: ?Project <% } %>, subject<% if (flow) { %>: ?Subject<% } %>)<% if (flow) { %>: Promise<StoreStatus> <% } %> {
     // your logic
   }
 }

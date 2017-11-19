@@ -27,11 +27,12 @@ module.exports = class extends Generator {
   }
   writing() {
     this.fs.copyTpl(
-      this.templatePath(`index.js${this.flow ? '.flow' : ''}`),
+      this.templatePath(`index.js`),
       this.destinationPath('index.js'),
       {
         name: this.name,
-        description: this.description
+        description: this.description,
+        flow: this.flow
       }
     );
     this.fs.copyTpl(
