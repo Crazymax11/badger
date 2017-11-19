@@ -27,7 +27,7 @@ module.exports = class extends Generator {
   }
   writing() {
     this.fs.copyTpl(
-      this.templatePath(`index.js${this.flow}` ? '.flow' : ''),
+      this.templatePath(`index.js${this.flow ? '.flow' : ''}`),
       this.destinationPath('index.js'),
       {
         badgeName: this.badgeName,
