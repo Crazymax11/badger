@@ -30,16 +30,16 @@ module.exports = class extends Generator {
       this.templatePath(`index.js${this.flow ? '.flow' : ''}`),
       this.destinationPath('index.js'),
       {
-        badgeName: this.badgeName,
-        badgeDescription: this.badgeDescription
+        name: this.name,
+        description: this.description
       }
     );
     this.fs.copyTpl(
       this.templatePath(`_package.json`),
       this.destinationPath('package.json'),
       {
-        badgeName: this.badgeName,
-        badgeDescription: this.badgeDescription
+        name: this.name,
+        description: this.description
       }
     );
     this.fs.copyTpl(

@@ -1,4 +1,4 @@
-class <%= storename %> {
+class <%= name %> {
   constructor() {}
 
   /**
@@ -114,4 +114,4 @@ class <%= storename %> {
   }
 }
 
-export default <%= storename %>;
+export default <%= name %>;

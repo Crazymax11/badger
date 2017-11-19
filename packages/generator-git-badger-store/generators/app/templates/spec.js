@@ -5,7 +5,7 @@ import testStore from 'git-badger-core/store-tests.js';
 import Store from './index.js';
 
 // eslint-disable-next-line
-describe('#<%= storename %>', function test() {
+describe('#<%= name %>', function test() {
   // your specific tests
   describe('#store');
   describe('#getLast');

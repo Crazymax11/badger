@@ -12,7 +12,7 @@ import type {
   HistoryRecord
 } from 'git-badger-core/types.js';
 
-class <%= storename %> implements Store {
+class <%= name %> implements Store {
   constructor() {}
 
   /**
@@ -128,4 +128,4 @@ class <%= storename %> implements Store {
   }
 }
 
-export default <%= storename %>;
+export default <%= name %>;
