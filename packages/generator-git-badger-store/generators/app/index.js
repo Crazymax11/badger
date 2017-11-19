@@ -46,7 +46,8 @@ module.exports = class extends Generator {
       this.templatePath('spec.js'),
       this.destinationPath('spec.js')
     );
-    
-    this.npmInstall(['chai', 'mocha');
+
+    this.npmInstall(['chai', 'mocha', 'git-badger-core']);
+    if (this.flow) this.npmInstall(['flow-bin']);
   }
 };
