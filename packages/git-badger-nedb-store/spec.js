@@ -1,5 +1,5 @@
 // eslint-disable no-shadow
-import { basicSuite } from '../git-badger-store-tests/index.js';
+import { basicSuite } from 'git-badger-store-tests/index.js';
 
 import Store from './index.js';
 

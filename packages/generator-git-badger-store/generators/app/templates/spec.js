@@ -1,6 +1,6 @@
 // eslint-disable no-shadow
 import { expect } from 'chai';
-import testStore from 'git-badger-core/store-tests.js';
+import { basicSuite } from 'git-badger-store-tests';
 
 import Store from './index.js';
 
@@ -14,9 +14,9 @@ describe('#<%= name %>', function test() {
 });
 
 /**
- * Tests provided by git-badger-core
+ * Tests provided by git-badger-store-tests
  */
-testStore(
+basicSuite(
   // store factory. Will be called to get store before each test
   () => new Store(),
   // clear store. Will be called to cleanup resources of used store.

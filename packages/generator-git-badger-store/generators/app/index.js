@@ -51,9 +51,36 @@ module.exports = class extends Generator {
         description: this.description
       }
     );
+    this.fs.copyTpl(
+      this.templatePath('.babelrc'),
+      this.destinationPath('.babelrc'),
+      {
+        name: this.name,
+        description: this.description
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('webpack.config.js'),
+      this.destinationPath('webpack.config.js'),
+      {
+        name: this.name,
+        description: this.description
+      }
+    );
 
-    const deps = ['chai', 'mocha', 'git-badger-core'];
-    if (this.flow) deps.push('flow-bing');
-    this.npmInstall(deps);
+    const deps = [
+      'chai',
+      'mocha',
+      'git-badger-store-tests',
+      'webpack',
+      'babel-loader',
+      'babel-core',
+      'babel-preset-env',
+      'babel-preset-flow',
+      'webpack-node-externals',
+      'eslint'
+    ];
+    if (this.flow) deps.push('flow-bin');
+    this.npmInstall(deps, { 'save-dev': true });
   }
 };
