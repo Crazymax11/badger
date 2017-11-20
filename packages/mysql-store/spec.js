@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import storeTests from 'git-badger-core/store-tests.js';
+import storeTests from 'git-badger-store-tests';
 import {
   storeToMysql,
   getLastFromMysql,

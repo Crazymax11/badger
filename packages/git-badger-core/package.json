@@ -1,5 +1,5 @@
 {
-  "name": "git-badger-core",
+  "name": "git-badger-server",
   "version": "0.8.1",
   "description": "",
   "main": "dist/app.js",
