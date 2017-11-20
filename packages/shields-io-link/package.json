@@ -1,6 +1,6 @@
 {
     "name": "shields-io-link",
-    "version": "0.7.10",
+    "version": "0.8.1",
     "description": "Provides function to create link to shields.io badge!",
     "main": "index.js"
 }
