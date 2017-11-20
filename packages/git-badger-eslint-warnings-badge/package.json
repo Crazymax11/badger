@@ -1,6 +1,6 @@
 {
   "name": "git-badger-eslint-warnings-badge",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Shows count of eslint warnings in your project",
   "main": "index.js",
   "keywords": [

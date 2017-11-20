@@ -1,6 +1,6 @@
 {
   "name": "git-badger-flow-coverage-badge",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Badge shows flow coverage of your project",
   "main": "index.js",
   "keywords": [
