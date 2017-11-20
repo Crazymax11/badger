@@ -1,7 +1,7 @@
 {
-  "name": "git-badger-nedv-store",
+  "name": "git-badger-nedb-store",
   "version": "0.8.1",
-  "description": "nedv",
+  "description": "nedb",
   "main": "dist/index.js",
   "keywords": [
     "git-badger-store"
