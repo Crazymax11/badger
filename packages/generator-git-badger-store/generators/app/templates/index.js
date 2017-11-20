@@ -106,6 +106,14 @@ class <%= name %> implements Store {
       throw new Error('project must be a string');
     }
 
+    if (count <= 0) {
+      throw new Error('count must be positive number');
+    }
+
+    if (!Number.isInteger(count)) {
+      throw new Error('count must be an interger');
+    }
+
     // your logic here instead of this
     const records = [
         {
@@ -138,6 +146,13 @@ class <%= name %> implements Store {
    * @param {?Subject} subject
    */
   getStatus(projec: ?Project , subjec: ?Subject): Promise<StoreStatus>  {
+    if (project != null && typeof project !== 'string') {
+      throw new Error('Project must be string or undefined');
+    }
+
+    if (subject != null && typeof subject !== 'string') {
+      throw new Error('Subject must be string or undefined');
+    }
     // your logic
   }
 }

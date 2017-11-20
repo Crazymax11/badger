@@ -129,6 +129,14 @@ class NeDBStore implements Store {
       throw new Error('project must be a string');
     }
 
+    if (count <= 0) {
+      throw new Error('count must be positive number');
+    }
+
+    if (!Number.isInteger(count)) {
+      throw new Error('count must be an interger');
+    }
+
     // your logic here instead of this
     const records = await new Promise((resolve, reject) =>
       this.db
@@ -151,7 +159,7 @@ class NeDBStore implements Store {
       ];
     }
 
-    return records.map(record => ({
+    return records.reverse().map(record => ({
       status: record.status,
       subject,
       time: record.time
@@ -164,14 +172,24 @@ class NeDBStore implements Store {
    * @param {?Subject} subject
    */
   async getStatus(project: ?Project, subject: ?Subject): Promise<StoreStatus> {
-    // your logic
+    if (project != null && typeof project !== 'string') {
+      throw new Error('Project must be string or undefined');
+    }
+
+    if (subject != null && typeof subject !== 'string') {
+      throw new Error('Subject must be string or undefined');
+    }
+
+    const findOptions = {};
+    if (subject) {
+      findOptions.subject = subject;
+    }
+    if (project) {
+      findOptions.project = project;
+    }
     const records = await new Promise((resolve, reject) =>
       this.db
-        .find({
-          subject,
-          project
-        })
-        .sort({ time: -1 })
+        .find(findOptions)
         .exec((err, docs) => (err ? reject(err) : resolve(docs)))
     );
 
