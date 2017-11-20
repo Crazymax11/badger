@@ -113,7 +113,7 @@ Publish `lerna publish`
 - [x] Add babelrc webpackconfig and some other in store generator
 - [x] Add new test to general test suite
 - [x] Extract test in independent package
-- [ ] Extract types in independent package
+- [x] Extract types in independent package
 - [ ] Extract server in independent package
 - [ ] up leveldown store
 - [ ] up mysql store
