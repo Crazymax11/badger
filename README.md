@@ -114,7 +114,7 @@ Publish `lerna publish`
 - [x] Add new test to general test suite
 - [x] Extract test in independent package
 - [x] Extract types in independent package
-- [ ] Extract server in independent package
+- [x] Extract server in independent package
 - [ ] up leveldown store
 - [ ] up mysql store
 - [ ] make scope on npm
