@@ -1,6 +1,6 @@
 {
   "name": "git-badger-nedv-store",
-  "version": "0.7.10",
+  "version": "0.8.0",
   "description": "nedv",
   "main": "dist/index.js",
   "keywords": [
