@@ -117,3 +117,4 @@ Publish `lerna publish`
 - [ ] Extract server in independent package
 - [ ] up leveldown store
 - [ ] up mysql store
+- [ ] make scope on npm
