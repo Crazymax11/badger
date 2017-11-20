@@ -115,6 +115,13 @@ Publish `lerna publish`
 - [x] Extract test in independent package
 - [x] Extract types in independent package
 - [x] Extract server in independent package
+- [ ] Create some badges!
+  - [ ] create eslint-disable badge
+  - [ ] create files badge
+  - [ ] create styles badge
+  - [ ] create js files badge
+  - [ ] create bundle-size badge
+- [ ] Create store for demo version (in memory with limited store)
 - [ ] up leveldown store
 - [ ] up mysql store
-- [ ] make scope on npm
+- [ ] make npm scope
