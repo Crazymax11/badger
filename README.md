@@ -106,13 +106,14 @@ Publish `lerna publish`
 - [ ] Describe docker guide
 - [ ] Upload docker image to dockerhub
 - [ ] Refactor server code
-- [ ] Create abstract store for OOP guys
 - [ ] Provide a way to require badge and store as is
 - [x] Make badges for this repo!
 - [ ] Rewrite README.md
 - [ ] Make graph in history instead of two columns
-- [ ] Add babelrc webpackconfig and some other in store generator
-- [ ] Add new test to general test suite
-- [ ] Extract test in independent package
+- [x] Add babelrc webpackconfig and some other in store generator
+- [x] Add new test to general test suite
+- [x] Extract test in independent package
 - [ ] Extract types in independent package
 - [ ] Extract server in independent package
+- [ ] up leveldown store
+- [ ] up mysql store
