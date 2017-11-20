@@ -3,7 +3,7 @@
 import { expect } from 'chai';
 import rimraf from 'rimraf';
 import testStore from 'git-badger-core/store-tests.js';
-import type { Status, Project, Subject, Time } from 'git-badger-core/types.js';
+import type { Status, Project, Subject, Time } from 'git-badger-types';
 
 import Store from './index.js';
 

@@ -71,6 +71,7 @@ module.exports = class extends Generator {
     const deps = [
       'chai',
       'mocha',
+      'git-badger-types',
       'git-badger-store-tests',
       'webpack',
       'babel-loader',

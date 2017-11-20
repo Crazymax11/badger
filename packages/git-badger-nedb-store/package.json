@@ -23,6 +23,7 @@
     "chai": "^4.1.2",
     "eslint": "^4.11.0",
     "flow-bin": "^0.59.0",
+    "git-badger-types": "^0.8.0",
     "git-badger-store-tests": "^0.7.10",
     "mocha": "^4.0.1",
     "webpack": "^3.8.1",

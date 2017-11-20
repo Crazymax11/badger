@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import getLink from 'shields-io-link';
-import type { Store, BadgeCreator } from './types.js';
+import type { Store, BadgeCreator } from 'git-badger-types.js';
 
 export default function createApp(
   port: number,

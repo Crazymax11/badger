@@ -8,7 +8,7 @@ import type {
   Project,
   Subject,
   Status
-} from 'git-badger-core/types.js';
+} from 'git-badger-types';
 
 type Host = string;
 type User = string;
