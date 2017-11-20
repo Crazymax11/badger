@@ -2313,9 +2313,42 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-git-badger-core@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/git-badger-core/-/git-badger-core-0.4.1.tgz#bcb0961ace0a7778498c6ebe2e7f2291a0873b9b"
+git-badger-leveldown-store@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/git-badger-leveldown-store/-/git-badger-leveldown-store-0.9.0.tgz#f1e362d14c7d7b59286b3ac3627693002da8ba24"
+  dependencies:
+    babel-core "^6.26.0"
+    babel-loader "^7.1.2"
+    babel-preset-env "^1.6.1"
+    babel-preset-flow "^6.23.0"
+    body-parser "^1.18.2"
+    command-line-args "^4.0.7"
+    express "^4.16.2"
+    leveldown "^2.0.0"
+    levelup "^2.0.0"
+    mysql "^2.15.0"
+    yaml "^0.3.0"
+
+git-badger-mysql-store@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/git-badger-mysql-store/-/git-badger-mysql-store-0.9.0.tgz#4ab38dda3c9552decfabf8377183d136f4e01e49"
+  dependencies:
+    babel-core "^6.26.0"
+    babel-loader "^7.1.2"
+    babel-preset-env "^1.6.1"
+    babel-preset-flow "^6.23.0"
+    body-parser "^1.18.2"
+    command-line-args "^4.0.7"
+    express "^4.16.2"
+    git-badger-server "^0.9.0"
+    leveldown "^2.0.0"
+    levelup "^2.0.0"
+    mysql "^2.15.0"
+    yaml "^0.3.0"
+
+git-badger-server@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/git-badger-server/-/git-badger-server-0.9.0.tgz#6a3dc89bcd65d36e5af0e362d3d5b6f17f6fb7cf"
   dependencies:
     babel-core "^6.26.0"
     babel-loader "^7.1.2"
@@ -2325,45 +2358,18 @@ git-badger-core@^0.4.1:
     command-line-args "^4.0.7"
     cors "^2.8.4"
     express "^4.16.2"
-    git-badger-mysql-store "^0.4.1"
+    git-badger-mysql-store "^0.9.0"
+    git-badger-types "^0.9.0"
     leveldown "^2.0.0"
     levelup "^2.0.0"
     mysql "^2.15.0"
     pug "^2.0.0-rc.4"
+    shields-io-link "^0.9.0"
     yaml "^0.3.0"
 
-git-badger-leveldown-store@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/git-badger-leveldown-store/-/git-badger-leveldown-store-0.4.1.tgz#6d34fda3955eb31797ea28b6431542295ce8af2d"
-  dependencies:
-    babel-core "^6.26.0"
-    babel-loader "^7.1.2"
-    babel-preset-env "^1.6.1"
-    babel-preset-flow "^6.23.0"
-    body-parser "^1.18.2"
-    command-line-args "^4.0.7"
-    express "^4.16.2"
-    leveldown "^2.0.0"
-    levelup "^2.0.0"
-    mysql "^2.15.0"
-    yaml "^0.3.0"
-
-git-badger-mysql-store@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/git-badger-mysql-store/-/git-badger-mysql-store-0.4.1.tgz#414d584158a5c0facc13f088c76f714c3e8aa556"
-  dependencies:
-    babel-core "^6.26.0"
-    babel-loader "^7.1.2"
-    babel-preset-env "^1.6.1"
-    babel-preset-flow "^6.23.0"
-    body-parser "^1.18.2"
-    command-line-args "^4.0.7"
-    express "^4.16.2"
-    git-badger-core "^0.4.1"
-    leveldown "^2.0.0"
-    levelup "^2.0.0"
-    mysql "^2.15.0"
-    yaml "^0.3.0"
+git-badger-types@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/git-badger-types/-/git-badger-types-0.9.0.tgz#d39ff64630c6eb7cfad14f0dd094e68f387140ad"
 
 git-raw-commits@^1.2.0:
   version "1.2.0"
@@ -4273,6 +4279,10 @@ shebang-command@^1.2.0:
 shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
+
+shields-io-link@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/shields-io-link/-/shields-io-link-0.9.0.tgz#b4ccfd9cf4ef4b1298910a2433e42428ede6fb4b"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"

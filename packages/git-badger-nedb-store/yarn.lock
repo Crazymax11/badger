@@ -1629,9 +1629,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-git-badger-store-tests@^0.7.10:
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/git-badger-store-tests/-/git-badger-store-tests-0.7.10.tgz#2763b0346438b7427fd4a93f2d8ff42dfa0396d6"
+git-badger-store-tests@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/git-badger-store-tests/-/git-badger-store-tests-0.9.0.tgz#78e9b90832b4c9465d545073c2f8ff124f5a5012"
+
+git-badger-types@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/git-badger-types/-/git-badger-types-0.9.0.tgz#d39ff64630c6eb7cfad14f0dd094e68f387140ad"
 
 glob-base@^0.3.0:
   version "0.3.0"
