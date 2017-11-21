@@ -6,6 +6,7 @@ import cors from 'cors';
 import getLink from 'shields-io-link';
 import type { Store, BadgeCreator } from 'git-badger-types';
 
+
 export default function createApp(
   port: number,
   store: Store,
