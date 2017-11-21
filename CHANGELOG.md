@@ -1,43 +1,39 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-<a name="0.12.0"></a>
-# [0.12.0](https://github.com/Crazymax11/badger/compare/v0.11.0...v0.12.0) (2017-11-21)
-
-
-
-
-**Note:** Version bump only for package git-badger-repo
-
-<a name="0.11.0"></a>
-# [0.11.0](https://github.com/Crazymax11/badger/compare/v0.10.0...v0.11.0) (2017-11-21)
-
-
-
-
-**Note:** Version bump only for package git-badger-repo
-
-<a name="0.10.0"></a>
-# [0.10.0](https://github.com/Crazymax11/badger/compare/v0.9.8...v0.10.0) (2017-11-21)
-
-
-
-
-**Note:** Version bump only for package git-badger-repo
-
-<a name="0.9.8"></a>
-## [0.9.8](https://github.com/Crazymax11/badger/compare/v0.9.7...v0.9.8) (2017-11-21)
-
-
-
-
-**Note:** Version bump only for package git-badger-repo
-
 <a name="0.1.0"></a>
 # 0.1.0 (2017-11-21)
 
+
+
+
+<a name="0.12.0"></a>
+# 0.12.0 (2017-11-21)
+
+* :bookmark: (release) publish v0.12.0 ([9156182](https://github.com/Crazymax11/badger/commit/9156182))
+* :rocket: (all) Add public option to publish config in scoped packages ([7450297](https://github.com/Crazymax11/badger/commit/7450297))
+
+
+
+<a name="0.11.0"></a>
+# 0.11.0 (2017-11-21)
+
+* :bookmark: (release) publish v0.11.0 ([553beb9](https://github.com/Crazymax11/badger/commit/553beb9))
+* :rocket: (all) Make all packages public ([da7af5a](https://github.com/Crazymax11/badger/commit/da7af5a))
+
+
+
+<a name="0.10.0"></a>
+# 0.10.0 (2017-11-21)
+
+* :bookmark: (release) publish v0.10.0 ([addcab1](https://github.com/Crazymax11/badger/commit/addcab1))
+* :hammer: (all) Move packages to @git-badger scope ([ff74c77](https://github.com/Crazymax11/badger/commit/ff74c77))
+* :hammer: (app) Rename package to git-badger-app ([8d90631](https://github.com/Crazymax11/badger/commit/8d90631))
+* :rocket: (lerna) Fix publish command ([5250c28](https://github.com/Crazymax11/badger/commit/5250c28))
+
+
+
+<a name="0.9.8"></a>
+## 0.9.8 (2017-11-21)
+
+* :bookmark: (release) publish v0.9.8 ([3f4d7ee](https://github.com/Crazymax11/badger/commit/3f4d7ee))
 
 
 
@@ -496,3 +492,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * initial commit ([b36e94b](https://github.com/Crazymax11/badger/commit/b36e94b))
 * Refactor all ([d481114](https://github.com/Crazymax11/badger/commit/d481114))
 * v0.1.0 ([796902f](https://github.com/Crazymax11/badger/commit/796902f))
+
+
+
