@@ -79,6 +79,7 @@ Dockerfile is [here](./packages/git-badger/Dockerfile). Feel free to fork.
 * `lerna bootstrap` bootstrap lerna
 * `lerna run build` build some of libs
 * `npm start` to start server, it will start web server so you might need ot use sudo for this
+* `conventional-changelog -p emoji -i CHANGELOG.md -s -r 0` to recreate changelog (idk why but it works like a shit in lernajs)
 
 We are using [commitizen](https://github.com/commitizen/cz-cli) with [cz-emoji format](https://github.com/ngryman/cz-emoji)
 * `npm i -g commitizen cz-emoji` install commitizen
