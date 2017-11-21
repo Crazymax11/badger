@@ -13,10 +13,13 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cd packages/git-badger && node index.js",
     "create-badges": "node create-badges.js",
-    "_publish": "lerna publish --conventional-commits --changelog-preset=angular-bitbucket -m \":bookmark: (release) publish %s\""
+    "_publish": "lerna publish --conventional-commits --changelog-preset=angular-emoji -m \":bookmark: (release) publish %s\""
   },
   "author": "Max Sosnov",
   "license": "ISC",
+  "commitizen": {
+    "path": "cz-conventional-changelog-emoji"
+  },
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -35,6 +38,7 @@
     "chai": "^4.1.2",
     "conventional-changelog-angular-emoji": "^0.2.2",
     "cross-env": "^5.1.1",
+    "cz-conventional-changelog-emoji": "^0.1.0",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.6.0",
