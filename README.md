@@ -129,3 +129,4 @@ Publish `lerna publish`
 - [ ] up mysql store
 - [x] make npm scope
 - [ ] Make git-badger app generator
+- [ ] Provide a way to load default templates if some template was not provided
