@@ -108,7 +108,7 @@ Publish `lerna publish`
 - [ ] Describe docker guide
 - [ ] Upload docker image to dockerhub
 - [ ] Refactor server code
-- [ ] Provide a way to require badge and store as is
+- [x] Provide a way to require badge and store as is
 - [x] Make badges for this repo!
 - [ ] Rewrite README.md
 - [ ] Make graph in history instead of two columns
