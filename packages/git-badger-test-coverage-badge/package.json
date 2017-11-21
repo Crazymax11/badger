@@ -1,6 +1,6 @@
 {
   "name": "git-badger-test-coverage-badge",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "Shows test coverage of your project",
   "main": "index.js",
   "keywords": [
