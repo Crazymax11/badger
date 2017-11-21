@@ -12,7 +12,8 @@
     "flow": "flow check",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cd packages/git-badger && node index.js",
-    "create-badges": "node create-badges.js"
+    "create-badges": "node create-badges.js",
+    "publish": "lerna publish --conventional-commits --changelog-preset=angular-bitbucket -m \":bookmark: (release) publish %s\""
   },
   "author": "Max Sosnov",
   "license": "ISC",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "babel-eslint": "^8.0.1",
     "chai": "^4.1.2",
+    "conventional-changelog-angular-emoji": "^0.2.2",
     "cross-env": "^5.1.1",
     "eslint": "^4.10.0",
     "eslint-config-airbnb-base": "^12.1.0",
