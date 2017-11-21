@@ -2,6 +2,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const cmdArgs = require('command-line-args');
 const cmdUsage = require('command-line-usage');
+const requireFallback = require('node-require-fallback');
 const server = require('@git-badger/server').default;
 
 const defaultOptions = {
@@ -122,11 +123,14 @@ function readConfig(configpath = defaultOptions.config) {
 function readBadges(badges = defaultOptions.badges) {
   return badges.reduce((acc, badge) => {
     // trying to get badge creator by mask
-    // eslint-disable-next-line
-    acc[badge] = require(`git-badger-${badge}-badge`);
+    const badgeCreator = requireFallback(`@git-badger/${badge}-badge`, `git-badger-${badge}-badge`, badge);
+    if (badgeCreator) {
+      // If badge exported as es6 module
+      acc[badge] = badgeCreator.default || badgeCreator;
+    } else {
+      consle.warn(`[WARN] Cant require badge ${badge}`);
+    }
 
-    // If badge exported as es6 module
-    acc[badge] = acc[badge].default || acc[badge];
     return acc;
   }, {});
 }
@@ -134,9 +138,10 @@ function readBadges(badges = defaultOptions.badges) {
 function createStore(storeConfig = defaultOptions.store) {
   let store = '';
   const { name: storeName, ...storeArgs } = storeConfig;
-  // eslint-disable-next-line
-  store = require(`@git-badger/${storeName}-store`);
-
+  store = requireFallback(`@git-badger/${storeName}-store`, `git-badger-${storeName}-store`, storeName);
+  if (!store) {
+    throw new Error(`Cant require store ${store}`);
+  }
   // If store exported as es6 module
   store = store.default || store;
 
