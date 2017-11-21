@@ -1,5 +1,5 @@
 {
-  "name": "git-badger-eslint-errors-badge",
+  "name": "@git-badger/eslint-errors-badge",
   "version": "0.9.8",
   "description": "Shows count of eslint errors in your project",
   "main": "index.js",

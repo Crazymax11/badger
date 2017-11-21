@@ -1,5 +1,5 @@
 {
-  "name": "git-badger-types",
+  "name": "@git-badger/types",
   "version": "0.9.8",
   "description": "",
   "main": "index.js",

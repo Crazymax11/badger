@@ -71,17 +71,17 @@ module.exports = class extends Generator {
     const deps = [
       'chai',
       'mocha',
-      'git-badger-types',
-      'git-badger-store-tests',
+      '@git-badger/types',
+      '@git-badger/store-tests',
       'webpack',
       'babel-loader',
       'babel-core',
       'babel-preset-env',
       'babel-preset-flow',
       'webpack-node-externals',
-      'eslint'
+      'eslint',
+      'flow-bin'
     ];
-    if (this.flow) deps.push('flow-bin');
     this.npmInstall(deps, { 'save-dev': true });
   }
 };

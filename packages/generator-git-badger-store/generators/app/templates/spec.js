@@ -1,6 +1,6 @@
 // eslint-disable no-shadow
 import { expect } from 'chai';
-import { basicSuite } from 'git-badger-store-tests';
+import { basicSuite } from '@git-badger/store-tests';
 
 import Store from './index.js';
 

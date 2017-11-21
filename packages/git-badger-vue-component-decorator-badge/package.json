@@ -1,5 +1,5 @@
 {
-  "name": "git-badger-vue-component-decorator-badge",
+  "name": "@git-badger/vue-component-decorator-badge",
   "version": "0.9.8",
   "description": "Shows count of @VueComponent decorators in your project",
   "main": "index.js",

@@ -10,7 +10,7 @@ import type {
   StoreRecord,
   StoreStatus,
   HistoryRecord
-} from 'git-badger-types';
+} from '@git-badger/types';
 
 /**
  * <%= description %>
