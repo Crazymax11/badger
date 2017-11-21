@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/server",
-  "version": "0.9.8",
+  "version": "0.10.0",
   "description": "",
   "main": "dist/app.js",
   "scripts": {
@@ -10,6 +10,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
+    "@git-badger/types": "^0.10.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
@@ -18,12 +19,11 @@
     "command-line-args": "^4.0.7",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "@git-badger/types": "^0.9.8",
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
     "pug": "^2.0.0-rc.4",
-    "shields-io-link": "^0.9.8",
+    "shields-io-link": "^0.10.0",
     "yaml": "^0.3.0"
   },
   "devDependencies": {
