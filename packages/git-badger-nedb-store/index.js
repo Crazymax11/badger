@@ -8,14 +8,13 @@ import type {
   Project,
   Subject,
   Status,
-  StoreRecord,
   StoreStatus,
   HistoryRecord
 } from 'git-badger-types';
 
 class NeDBStore implements Store {
   db: any;
-  constructor(path: ?string) {
+  constructor({path}: {path: ?string}) {
     if (path) {
       this.db = new DataStore({
         filename: path,
