@@ -1,6 +1,6 @@
 store:
-  name: leveldown
-  dbpath: ./db
+  name: nedb
+  path: ./db
 port: 80
 templates: './templates'
 badges: 

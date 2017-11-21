@@ -13,13 +13,11 @@ const defaultOptions = {
     'vue-component-decorator'
   ],
   store: {
-    name: 'leveldown',
-    dbpath: './db'
+    path: './db'
   },
   config: 'config.yml',
   port: 80,
-  templates: './templates',
-  implicit: 'none'
+  templates: './templates'
 };
 
 const optionsDefinition = [
