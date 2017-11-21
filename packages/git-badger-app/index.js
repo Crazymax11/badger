@@ -106,7 +106,7 @@ server(
   targetOptions.port,
   createStore(targetOptions.store),
   readBadges(targetOptions.badges),
-  targetOptions.templates
+  [targetOptions.templates, __dirname + '/templates']
 );
 
 function readConfig(configpath = defaultOptions.config) {
