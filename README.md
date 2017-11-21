@@ -123,6 +123,7 @@ Publish `lerna publish`
   - [ ] create styles badge
   - [ ] create js files badge
   - [ ] create bundle-size badge
+  - [ ] create lines of code badge
 - [ ] Create store for demo version (in memory with limited store)
 - [ ] up leveldown store
 - [ ] up mysql store
