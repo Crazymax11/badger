@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="0.9.6"></a>
+## [0.9.6](https://github.com/Crazymax11/badger/compare/v0.9.5...v0.9.6) (2017-11-21)
+
+
+
+
+**Note:** Version bump only for package git-badger-repo
+
 <a name="0.1.0"></a>
 # [0.1.0](https://github.com/Crazymax11/badger/compare/v0.9.5...v0.1.0) (2017-11-21)
 
@@ -256,6 +269,3 @@
 
 <a name="0.1.0"></a>
 # 0.1.0 (2017-10-29)
-
-
-
