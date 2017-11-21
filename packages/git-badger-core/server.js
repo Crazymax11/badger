@@ -22,6 +22,9 @@ export default function createApp(
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
     const badgeHandler = badges[badgeType];
+    if (!badgeHandler) {
+      return res.status(400).send('wrong badge!')
+    }
     const badgeData = badgeHandler.create(lastValue.status);
     const badge = getLink(badgeData);
     return res.redirect(badge);
