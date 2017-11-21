@@ -13,6 +13,7 @@ const defaultOptions = {
     'vue-component-decorator'
   ],
   store: {
+    name: 'nedb',
     path: './db'
   },
   config: 'config.yml',
@@ -134,7 +135,7 @@ function createStore(storeConfig = defaultOptions.store) {
   let store = '';
   const { name: storeName, ...storeArgs } = storeConfig;
   // eslint-disable-next-line
-  store = require(`git-badger-${storeName}-store`);
+  store = require(`@git-badger/${storeName}-store`);
 
   // If store exported as es6 module
   store = store.default || store;
