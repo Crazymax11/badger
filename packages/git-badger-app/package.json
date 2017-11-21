@@ -9,6 +9,9 @@
   },
   "bin": "bin/git-badger.js",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@git-badger/eslint-errors-badge": "^0.11.0",
     "@git-badger/eslint-warnings-badge": "^0.11.0",

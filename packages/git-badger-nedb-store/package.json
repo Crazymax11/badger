@@ -13,6 +13,9 @@
   "author": "",
   "license": "ISC",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "nedb": "^1.8.0",
     "private": false

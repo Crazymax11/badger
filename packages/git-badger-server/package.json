@@ -50,5 +50,8 @@
   },
   "author": "",
   "private": false,
-  "license": "ISC"
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  }
 }
