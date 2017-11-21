@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@git-badger/store-tests@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@git-badger/store-tests/-/store-tests-0.12.0.tgz#e906fcf682677839d5a9ce1d42f7eff3de3f0b69"
+
+"@git-badger/types@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@git-badger/types/-/types-0.12.0.tgz#8ce580823b86cbf2b5deac728a784734923afe5f"
+
 JSONStream@^1.0.4:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.1.tgz#707f761e01dae9e16f1bcf93703b78c70966579a"
@@ -2259,14 +2267,6 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
   dependencies:
     assert-plus "^1.0.0"
-
-git-badger-store-tests@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/git-badger-store-tests/-/git-badger-store-tests-0.9.0.tgz#78e9b90832b4c9465d545073c2f8ff124f5a5012"
-
-git-badger-types@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/git-badger-types/-/git-badger-types-0.9.0.tgz#d39ff64630c6eb7cfad14f0dd094e68f387140ad"
 
 git-raw-commits@^1.2.0:
   version "1.2.0"

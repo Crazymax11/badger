@@ -12,7 +12,7 @@ import type {
   StoreRecord,
   StoreStatus,
   HistoryRecord
-} from 'git-badger-types';
+} from '@git-badger/types';
 
 class LeveldownStore implements Store {
   db: any;
@@ -116,6 +116,14 @@ class LeveldownStore implements Store {
       throw new Error('project must be a string');
     }
 
+    if (count <= 0) {
+      throw new Error('count must be positive number');
+    }
+
+    if (!Number.isInteger(count)) {
+      throw new Error('count must be an interger');
+    }
+
     const key = getKey(project, subject);
     const history = await getFromLevelDB(this.db, key);
     const records = history.slice(-count);
@@ -156,7 +164,15 @@ class LeveldownStore implements Store {
    * @param {?Project} project
    * @param {?Subject} subject
    */
-  getStatus(project: ?Project, subject: ?Subject): Promise<StoreStatus> {
+  async getStatus(project: ?Project, subject: ?Subject): Promise<StoreStatus> {
+    if (project != null && typeof project !== 'string') {
+      throw new Error('Project must be string or undefined');
+    }
+
+    if (subject != null && typeof subject !== 'string') {
+      throw new Error('Subject must be string or undefined');
+    }
+
     return getDbStatus(this.db, project, subject);
   }
 }

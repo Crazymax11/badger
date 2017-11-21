@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/nedb-store",
-  "version": "0.12.0",
+  "version": "0.11.0",
   "description": "nedb",
   "main": "dist/index.js",
   "keywords": [
@@ -17,8 +17,7 @@
     "access": "public"
   },
   "dependencies": {
-    "nedb": "^1.8.0",
-    "private": false
+    "nedb": "^1.8.0"
   },
   "devDependencies": {
     "@git-badger/store-tests": "^0.12.0",
