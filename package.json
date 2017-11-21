@@ -13,7 +13,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cd packages/git-badger && node index.js",
     "create-badges": "node create-badges.js",
-    "publish": "lerna publish --conventional-commits --changelog-preset=angular-bitbucket -m \":bookmark: (release) publish %s\""
+    "_publish": "lerna publish --conventional-commits --changelog-preset=angular-bitbucket -m \":bookmark: (release) publish %s\""
   },
   "author": "Max Sosnov",
   "license": "ISC",
