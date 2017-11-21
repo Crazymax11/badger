@@ -1,6 +1,6 @@
 {
   "name": "git-badger",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,8 +20,8 @@
     "git-badger-eslint-errors-badge": "^0.9.4",
     "git-badger-eslint-warnings-badge": "^0.9.4",
     "git-badger-flow-coverage-badge": "^0.9.4",
-    "git-badger-nedb-store": "^0.9.4",
-    "git-badger-server": "^0.9.4",
+    "git-badger-nedb-store": "^0.9.5",
+    "git-badger-server": "^0.9.5",
     "git-badger-test-coverage-badge": "^0.9.4",
     "git-badger-vue-component-decorator-badge": "^0.9.4",
     "js-yaml": "^3.10.0",

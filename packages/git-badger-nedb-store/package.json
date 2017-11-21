@@ -1,6 +1,6 @@
 {
   "name": "git-badger-nedb-store",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "nedb",
   "main": "dist/index.js",
   "keywords": [
