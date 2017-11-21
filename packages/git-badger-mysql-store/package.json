@@ -44,5 +44,6 @@
     "webpack": "^3.8.1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "private": false
 }

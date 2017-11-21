@@ -8,6 +8,7 @@
     "start": "node index.js"
   },
   "bin": "bin/git-badger.js",
+  "private": false,
   "dependencies": {
     "@git-badger/eslint-errors-badge": "^0.10.0",
     "@git-badger/eslint-warnings-badge": "^0.10.0",

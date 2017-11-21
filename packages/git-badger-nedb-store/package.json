@@ -12,7 +12,9 @@
   },
   "author": "",
   "license": "ISC",
+  "private": false,
   "dependencies": {
+    "private": false,
     "nedb": "^1.8.0"
   },
   "devDependencies": {

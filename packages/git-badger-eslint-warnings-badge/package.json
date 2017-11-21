@@ -7,5 +7,6 @@
     "git-badger-badge"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "private": false
 }
