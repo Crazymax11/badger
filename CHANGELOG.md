@@ -1,6 +1,11 @@
 <a name="0.1.0"></a>
 # 0.1.0 (2017-11-21)
 
+* :heavy_minus_sign: (app) Remove extra deps ([0bafb61](https://github.com/Crazymax11/badger/commit/0bafb61))
+* :memo: (changelog) Fix changelog ([7632b23](https://github.com/Crazymax11/badger/commit/7632b23))
+* :memo: (readme) Add badge idea ([20053a7](https://github.com/Crazymax11/badger/commit/20053a7))
+* :memo: (readme) Add changelog generation script in readme' ([86e5e1c](https://github.com/Crazymax11/badger/commit/86e5e1c))
+* :memo: (readme) Check done item ([9d0567b](https://github.com/Crazymax11/badger/commit/9d0567b))
 
 
 
