@@ -7,7 +7,9 @@
     "test": "exit 0",
     "start": "node index.js"
   },
-  "bin": "bin/git-badger.js",
+  "bin": {
+    "git-badger": "bin/git-badger.js"
+  },
   "private": false,
   "publishConfig": {
     "access": "public"

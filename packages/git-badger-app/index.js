@@ -2,7 +2,7 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const cmdArgs = require('command-line-args');
 const cmdUsage = require('command-line-usage');
-const server = require('git-badger-server').default;
+const server = require('@git-badger/server').default;
 
 const defaultOptions = {
   badges: [
