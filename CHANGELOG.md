@@ -1,11 +1,54 @@
 <a name="0.1.0"></a>
 # 0.1.0 (2017-11-21)
 
+* :memo: (readme) Check item in todo list ([ff319f2](https://github.com/Crazymax11/badger/commit/ff319f2))
+* :sparkles: (leveldown) Make leveldown store compatible with tests ([15147ec](https://github.com/Crazymax11/badger/commit/15147ec))
+
+
+
+<a name="0.12.5"></a>
+## 0.12.5 (2017-11-21)
+
+* :sparkles: (app) Require store and badges by @git-badger mask then by git-badger then as is' ([73bc90d](https://github.com/Crazymax11/badger/commit/73bc90d))
+* v0.12.5 ([51f2ad1](https://github.com/Crazymax11/badger/commit/51f2ad1))
+
+
+
+<a name="0.12.4"></a>
+## 0.12.4 (2017-11-21)
+
+* :bug: (app) Fix a way to requiring store ([bedc532](https://github.com/Crazymax11/badger/commit/bedc532))
+* v0.12.4 ([8b19c38](https://github.com/Crazymax11/badger/commit/8b19c38))
+
+
+
+<a name="0.12.3"></a>
+## 0.12.3 (2017-11-21)
+
+* :bug: (app) Fix wrong server require and bin name ([33e2441](https://github.com/Crazymax11/badger/commit/33e2441))
+* v0.12.3 ([2534b29](https://github.com/Crazymax11/badger/commit/2534b29))
+
+
+
+<a name="0.12.2"></a>
+## 0.12.2 (2017-11-21)
+
+* :memo: (readme) Add task in todo ([8c1b97c](https://github.com/Crazymax11/badger/commit/8c1b97c))
+* :sparkles: (app) Load default template fallback ([7d400ec](https://github.com/Crazymax11/badger/commit/7d400ec))
+* v0.12.2 ([19d3501](https://github.com/Crazymax11/badger/commit/19d3501))
+
+
+
+<a name="0.12.1"></a>
+## 0.12.1 (2017-11-21)
+
 * :heavy_minus_sign: (app) Remove extra deps ([0bafb61](https://github.com/Crazymax11/badger/commit/0bafb61))
 * :memo: (changelog) Fix changelog ([7632b23](https://github.com/Crazymax11/badger/commit/7632b23))
+* :memo: (changelog) Generate changelog ([57fe3d7](https://github.com/Crazymax11/badger/commit/57fe3d7))
 * :memo: (readme) Add badge idea ([20053a7](https://github.com/Crazymax11/badger/commit/20053a7))
 * :memo: (readme) Add changelog generation script in readme' ([86e5e1c](https://github.com/Crazymax11/badger/commit/86e5e1c))
 * :memo: (readme) Check done item ([9d0567b](https://github.com/Crazymax11/badger/commit/9d0567b))
+* v0.12.1 ([bcac05c](https://github.com/Crazymax11/badger/commit/bcac05c))
 
 
 
