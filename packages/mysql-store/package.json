@@ -1,6 +1,6 @@
 {
   "name": "git-badger-mysql-store",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "body-parser": "^1.18.2",
     "command-line-args": "^4.0.7",
     "express": "^4.16.2",
-    "git-badger-server": "^0.9.1",
+    "git-badger-server": "^0.9.2",
     "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
@@ -33,7 +33,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-prettier": "^2.3.1",
     "flow-bin": "^0.57.3",
-    "git-badger-types": "^0.9.1",
+    "git-badger-types": "^0.9.2",
     "js-yaml": "^3.10.0",
     "lerna": "^2.4.0",
     "mocha": "^4.0.1",
