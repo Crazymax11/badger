@@ -125,3 +125,4 @@ Publish `lerna publish`
 - [ ] up leveldown store
 - [ ] up mysql store
 - [ ] make npm scope
+- [ ] Make git-badger app generator
