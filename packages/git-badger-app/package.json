@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/app",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,13 +10,13 @@
   "bin": "bin/git-badger.js",
   "private": false,
   "dependencies": {
-    "@git-badger/eslint-errors-badge": "^0.10.0",
-    "@git-badger/eslint-warnings-badge": "^0.10.0",
-    "@git-badger/flow-coverage-badge": "^0.10.0",
-    "@git-badger/nedb-store": "^0.10.0",
-    "@git-badger/server": "^0.10.0",
-    "@git-badger/test-coverage-badge": "^0.10.0",
-    "@git-badger/vue-component-decorator-badge": "^0.10.0",
+    "@git-badger/eslint-errors-badge": "^0.11.0",
+    "@git-badger/eslint-warnings-badge": "^0.11.0",
+    "@git-badger/flow-coverage-badge": "^0.11.0",
+    "@git-badger/nedb-store": "^0.11.0",
+    "@git-badger/server": "^0.11.0",
+    "@git-badger/test-coverage-badge": "^0.11.0",
+    "@git-badger/vue-component-decorator-badge": "^0.11.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
