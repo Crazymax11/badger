@@ -1,6 +1,6 @@
 {
   "name": "git-badger-store-tests",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "Test for any git badger store",
   "main": "index.js",
   "scripts": {
