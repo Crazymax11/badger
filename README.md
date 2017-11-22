@@ -130,3 +130,8 @@ Publish `lerna publish`
 - [x] make npm scope
 - [ ] Make git-badger app generator
 - [x] Provide a way to load default templates if some template was not provided
+- [ ] make frontend great again
+  - [ ] make great /
+  - [ ] make great /status
+  - [ ] make great history
+  - [ ] make great badge status
