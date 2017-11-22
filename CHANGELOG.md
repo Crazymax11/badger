@@ -1,7 +1,28 @@
 <a name="0.1.0"></a>
-# 0.1.0 (2017-11-21)
+# 0.1.0 (2017-11-22)
 
+* :construction: (mysql) Define store interface methods in mysql store ([b9dbf18](https://github.com/Crazymax11/badger/commit/b9dbf18))
+* :fire: (eslint) Remove extra eslintrc ([97fbe16](https://github.com/Crazymax11/badger/commit/97fbe16))
+* :memo: (readme) Add tasks ([ffa311e](https://github.com/Crazymax11/badger/commit/ffa311e))
+* :memo: (readme) Check done item ([67eb4ed](https://github.com/Crazymax11/badger/commit/67eb4ed))
+
+
+
+<a name="0.12.7"></a>
+## 0.12.7 (2017-11-22)
+
+* :bookmark: release v0.12.7 ([9428eab](https://github.com/Crazymax11/badger/commit/9428eab))
+
+
+
+<a name="0.12.6"></a>
+## 0.12.6 (2017-11-22)
+
+* :bookmark: release v0.12.6 ([1ae232f](https://github.com/Crazymax11/badger/commit/1ae232f))
+* :heavy_minus_sign: (server) Remove leveldown from deps ([47fef83](https://github.com/Crazymax11/badger/commit/47fef83))
+* :memo: (changelog) Generate changelog ([849988c](https://github.com/Crazymax11/badger/commit/849988c))
 * :memo: (readme) Check item in todo list ([ff319f2](https://github.com/Crazymax11/badger/commit/ff319f2))
+* :rocket: (lerna) Describe lerna commit message in lerna.json ([1b85f64](https://github.com/Crazymax11/badger/commit/1b85f64))
 * :sparkles: (leveldown) Make leveldown store compatible with tests ([15147ec](https://github.com/Crazymax11/badger/commit/15147ec))
 
 
