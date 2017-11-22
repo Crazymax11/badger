@@ -19,7 +19,6 @@
     "command-line-args": "^4.0.7",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "leveldown": "^2.0.0",
     "levelup": "^2.0.0",
     "mysql": "^2.15.0",
     "pug": "^2.0.0-rc.4",
