@@ -7,7 +7,9 @@ import type {
   Time,
   Project,
   Subject,
-  Status
+  Status,
+  HistoryRecord,
+  StoreStatus
 } from 'git-badger-types';
 
 type Host = string;
@@ -102,7 +104,7 @@ export class RawMysqlStore implements Store {
       throw new Error('subject must be a string');
     }
     return new Promise((resolve, reject) => {
-      const query = getLastFromMysql(project, subject);
+      const query = getLastFromMysql(project, subject, 1);
       this.pool.query(query, (err, result) => {
         if (err) {
           return reject(err);
@@ -122,6 +124,91 @@ export class RawMysqlStore implements Store {
       });
     });
   }
+
+  async getLastN(
+    count: number,
+    project: Project,
+    subject: Subject
+  ): Promise<HistoryRecord[]> {
+    if (typeof count !== 'number') {
+      throw new Error('count must be a number');
+    }
+    if (typeof subject !== 'string') {
+      throw new Error('subject must be a string');
+    }
+
+    if (typeof project !== 'string') {
+      throw new Error('project must be a string');
+    }
+
+    if (count <= 0) {
+      throw new Error('count must be positive number');
+    }
+
+    if (!Number.isInteger(count)) {
+      throw new Error('count must be an interger');
+    }
+
+    const query = getLastFromMysql(project, subject, count);
+    const rows = await new Promise((resolve, reject) => {
+      this.pool.query(query, (err, result) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(result);
+      });
+    });
+
+    if (!rows.length) {
+      return [
+        {
+          status: 'none',
+          subject,
+          time: 0
+        }
+      ];
+    }
+
+    return rows.map(row => ({
+      status: row.status,
+      subject,
+      time: row.time
+    }));
+  }
+
+  /**
+   * Get status of db
+   * @param {?Project} project
+   * @param {?Subject} subject
+   */
+  async getStatus(project: ?Project, subject: ?Subject): Promise<StoreStatus> {
+    if (project != null && typeof project !== 'string') {
+      throw new Error('Project must be string or undefined');
+    }
+
+    if (subject != null && typeof subject !== 'string') {
+      throw new Error('Subject must be string or undefined');
+    }
+
+    const query = getStatusFromMysql(project, subject);
+    const rows = await new Promise((resolve, reject) => {
+      this.pool.query(query, (err, result) => {
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(result);
+      });
+    });
+    // your logic
+
+    return {
+      projects: rows[0].projects,
+      subjects: rows[0].subjects,
+      records: rows[0].records,
+      status: 'ok'
+    };
+  }
 }
 
 export function storeToMysql(
@@ -137,12 +224,13 @@ export function storeToMysql(
 }
 
 export function getLastFromMysql(
-  project: Project,
-  subject: Subject
+  project: ?Project,
+  subject: ?Subject,
+  count: number
 ): MysqlQuery {
   return mysql.format(
-    'SELECT status FROM badges WHERE project = ? AND subject = ? ORDER BY id DESC LIMIT 1',
-    [project, subject]
+    'SELECT status FROM badges WHERE project = ? AND subject = ? ORDER BY id DESC LIMIT ?',
+    [project, subject, count || 1]
   );
 }
 
@@ -158,6 +246,13 @@ export function createTable(): MysqlQuery {
         status VARCHAR(50) NOT NULL,
         time TIMESTAMP
     )`;
+}
+
+export function getStatusFromMysql(project: Project, subject: Subject) {
+  return mysql.format(
+    'SELECT COUNT(*) as records, COUNT(DISTINCT subject) as subjects, COUNT(DISTINCT project) as projects FROM badges WHERE project = ? AND subject = ?',
+    [project, subject]
+  );
 }
 
 class MysqlStore extends RawMysqlStore implements Store {

@@ -145,7 +145,7 @@ class <%= name %> implements Store {
    * @param {?Project} project
    * @param {?Subject} subject
    */
-  getStatus(projec: ?Project , subjec: ?Subject): Promise<StoreStatus>  {
+  getStatus(project: ?Project , subject: ?Subject): Promise<StoreStatus>  {
     if (project != null && typeof project !== 'string') {
       throw new Error('Project must be string or undefined');
     }
