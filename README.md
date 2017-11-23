@@ -134,3 +134,4 @@ Publish `lerna publish`
   - [ ] make great /status
   - [ ] make great history
   - [ ] make great badge status
+- [ ] Deploy to Heroku
