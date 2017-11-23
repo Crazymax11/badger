@@ -13,28 +13,29 @@ const creator = {
    * @return {string} badge.status - text on right side of badge
    */
   create(status) {
-    
     if (status === 'none' || isNaN(status)) {
       return {
-          color: 'lightgrey',
-          status: 'unknown',
-          subject: 'flow-coverage'
-      }
+        color: 'lightgrey',
+        status: 'unknown',
+        subject: 'test-coverage'
+      };
     }
-  
+
     // convert status to your type explicit
     const coverage = Number(status);
-    const color = coverage > 90 ? 'brightgreen' :
-      coverage > 80 ? 'green' :
-      coverage > 60 ? 'yellowgreen' :
-      coverage > 40 ? 'yellow' :
-      coverage > 20 ? 'orange' :
-      'red';
+    const color =
+      coverage > 90
+        ? 'brightgreen'
+        : coverage > 80
+          ? 'green'
+          : coverage > 60
+            ? 'yellowgreen'
+            : coverage > 40 ? 'yellow' : coverage > 20 ? 'orange' : 'red';
 
     return {
-      color: color,
+      color,
       subject: 'test-coverage',
-      status: status
+      status
     };
   },
   /**
