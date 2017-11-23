@@ -248,10 +248,30 @@ export function createTable(): MysqlQuery {
     )`;
 }
 
-export function getStatusFromMysql(project: Project, subject: Subject) {
+export function getStatusFromMysql(project: ?Project, subject: ?Subject) {
+  if (project && subject) {
+    return mysql.format(
+      'SELECT COUNT(*) as records, COUNT(DISTINCT subject) as subjects, COUNT(DISTINCT project) as projects FROM badges WHERE project = ? AND subject = ?',
+      [project, subject]
+    );
+  }
+
+  if (project) {
+    return mysql.format(
+      'SELECT COUNT(*) as records, COUNT(DISTINCT subject) as subjects, COUNT(DISTINCT project) as projects FROM badges WHERE project = ?',
+      [project]
+    );
+  }
+
+  if (subject) {
+    return mysql.format(
+      'SELECT COUNT(*) as records, COUNT(DISTINCT subject) as subjects, COUNT(DISTINCT project) as projects FROM badges WHERE subject = ?',
+      [subject]
+    );
+  }
+
   return mysql.format(
-    'SELECT COUNT(*) as records, COUNT(DISTINCT subject) as subjects, COUNT(DISTINCT project) as projects FROM badges WHERE project = ? AND subject = ?',
-    [project, subject]
+    'SELECT COUNT(*) as records, COUNT(DISTINCT subject) as subjects, COUNT(DISTINCT project) as projects FROM badges'
   );
 }
 
