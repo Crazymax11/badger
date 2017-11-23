@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/server",
-  "version": "0.12.7",
+  "version": "0.13.0",
   "description": "",
   "main": "dist/app.js",
   "scripts": {

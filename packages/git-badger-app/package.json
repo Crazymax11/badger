@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/app",
-  "version": "0.12.7",
+  "version": "0.13.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "@git-badger/eslint-warnings-badge": "^0.12.7",
     "@git-badger/flow-coverage-badge": "^0.12.7",
     "@git-badger/nedb-store": "^0.12.7",
-    "@git-badger/server": "^0.12.7",
+    "@git-badger/server": "^0.13.0",
     "@git-badger/test-coverage-badge": "^0.12.7",
     "@git-badger/vue-component-decorator-badge": "^0.12.7",
     "command-line-args": "^4.0.7",

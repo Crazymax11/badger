@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/leveldown-store",
-  "version": "0.12.7",
+  "version": "0.13.0",
   "description": "Leveldown store for git-badger",
   "main": "dist/app.js",
   "scripts": {
