@@ -125,7 +125,7 @@ Publish `lerna publish`
   - [ ] create lines of code badge
 - [ ] Create store for demo version (in memory with limited store)
 - [x] up leveldown store
-- [ ] up mysql store
+- [x] up mysql store
 - [x] make npm scope
 - [ ] Make git-badger app generator
 - [x] Provide a way to load default templates if some template was not provided
