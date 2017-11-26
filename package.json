@@ -11,7 +11,7 @@
     "test": "mocha --compilers js:babel-core/register packages/**/*spec.js",
     "flow": "flow check",
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "cd packages/git-badger && node index.js",
+    "start": "cd packages/git-badger-app && node index.js",
     "create-badges": "node create-badges.js",
     "_publish": "lerna publish --conventional-commits --changelog-preset=emoji -m \":bookmark: (release) publish %s\"",
     "changelog": "conventional-changelog -p emoji -i CHANGELOG.md -s -r 0"
