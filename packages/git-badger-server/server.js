@@ -6,7 +6,6 @@ import cors from 'cors';
 import getLink from 'shields-io-link';
 import type { Store, BadgeCreator } from 'git-badger-types';
 
-
 export default function createApp(
   port: number,
   store: Store,
@@ -18,20 +17,64 @@ export default function createApp(
   app.set('views', templates);
   app.use(bodyParser.json());
   app.use(cors());
+  app.use(express.static('dist'));
+  app.get('/badges/:badge/image', async (req, res) => {
+    const badge = req.params.badge;
+    const badgeHandler = badges[badge];
+    if (!badgeHandler) {
+      return res.status(400).send('wrong badge!');
+    }
+
+    res.send(badgeHandler.image);
+  });
+  app.get('/badges/:badge', async (req, res) => {
+    const badge = req.params.badge;
+    const badgeHandler = badges[badge];
+    if (!badgeHandler) {
+      return res.status(400).send('wrong badge!');
+    }
+
+    res.render(
+      'badgePage',
+      {
+        badge: badgeHandler
+      },
+      (err, html) => {
+        if (err) {
+          console.error(err);
+          return res.send(err);
+        }
+        return res.send(html);
+      }
+    );
+  });
+
   app.get('/badges/:badgeType/:project', async (req, res) => {
     const badgeType = req.params.badgeType;
     const project = req.params.project;
     const lastValue = await store.getLast(project, badgeType);
     const badgeHandler = badges[badgeType];
     if (!badgeHandler) {
-      return res.status(400).send('wrong badge!')
+      return res.status(400).send('wrong badge!');
     }
     const badgeData = badgeHandler.create(lastValue.status);
     const badge = getLink(badgeData);
     return res.redirect(badge);
   });
 
-  app.get('/badges/:project', async (req, res) => {
+  app.get('/badges/:badge/status/:status', async (req, res) => {
+    const badgeType = req.params.badge;
+    const status = req.params.status;
+    const badgeHandler = badges[badgeType];
+    if (!badgeHandler) {
+      return res.status(400).send('wrong badge!');
+    }
+    const badgeData = badgeHandler.create(status);
+    const badge = getLink(badgeData);
+    return res.redirect(badge);
+  });
+
+  app.get('/projects/:project', async (req, res) => {
     const project = req.params.project;
     const links = await Promise.all(
       Object.entries(badges).map(async ([badgeType, badgeHandler]) => {
@@ -56,7 +99,6 @@ export default function createApp(
       }
     );
   });
-
   app.get('/badges/:badgeType/history/:project', async (req, res) => {
     const project = req.params.project;
     const badgeType = req.params.badgeType;
@@ -136,6 +178,39 @@ export default function createApp(
       res.json(status);
     } catch (err) {
       res.status(500).send(err);
+    }
+  });
+
+  app.get('/activities', async (req, res) => {
+    let limit = req.query.limit || '10';
+    let offset = req.query.offset || '0';
+
+    limit = parseInt(limit, 10);
+    offset = parseInt(offset, 10);
+
+    if (Number.isNaN(limit)) {
+      return res.status(500).send('Limit must be an integer!');
+    }
+
+    if (Number.isNaN(offset)) {
+      return res.status(500).send('Offset must be an integer!');
+    }
+
+    if (limit <= 0) {
+      limit = 1;
+    } else if (limit > 100) {
+      limit = 100;
+    }
+
+    if (offset < 0) {
+      offset = 1;
+    }
+
+    try {
+      const activities = await store.getLastActivities(offset, limit);
+      return res.json(activities);
+    } catch (err) {
+      return res.status(500).send(err);
     }
   });
 

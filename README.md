@@ -131,7 +131,7 @@ Publish `lerna publish`
 - [x] Provide a way to load default templates if some template was not provided
 - [ ] make frontend great again
   - [x] make great /
-  - [ ] make great /status
+  - [x] make great /status
   - [ ] make great history
   - [ ] make great badge status
 - [ ] Deploy to Heroku

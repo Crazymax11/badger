@@ -410,6 +410,66 @@ function getLastN(storeCreator, cleanup) {
   });
 }
 
+function getLastActivities(storeCreator, cleanup) {
+  describe('#getLastActivities', () => {
+    beforeEach(function beforeHook() {
+      this.context = createStoreForTest(storeCreator, String(Date.now()));
+    });
+    afterEach(function afterHook() {
+      return cleanup(this.context.store);
+    });
+    it('should throw error if limit is not provided', function test() {
+      const { store } = this.context;
+      return expect(store.getLastActivities(0)).to.be.rejected;
+    });
+    it('should throw error if limit is not an integer', function test() {
+      const { store } = this.context;
+      return expect(store.getLastActivities(0, '1')).to.be.rejected;
+    });
+    it('should throw error if offset is not an integer', function test() {
+      const { store } = this.context;
+      return expect(store.getLastActivities('123', 1)).to.be.rejected;
+    });
+    it('should throw error if limit is below 1', function test() {
+      const { store } = this.context;
+      return expect(store.getLastActivities(123, 0)).to.be.rejected;
+    });
+    it('should throw error if offset is below 0', function test() {
+      const { store } = this.context;
+      return expect(store.getLastActivities(-1, 123)).to.be.rejected;
+    });
+    it('should throw error if limit is higher than 100', function test() {
+      const { store } = this.context;
+      return expect(store.getLastActivities(123, 123)).to.be.rejected;
+    });
+    it('should return history records', async function test() {
+      const { store } = this.context;
+      const records = await fillStore(100, store);
+      const result = await store.getLastActivities(0, 100);
+      expect(result).to.deep.equal(records.reverse());
+    });
+    it('should return history records with offset', async function test() {
+      const { store } = this.context;
+      const records = await fillStore(100, store);
+      const result = await store.getLastActivities(10, 10);
+      expect(result).to.deep.equal(records.slice(80, 90).reverse());
+    });
+    it('should return array of one history record with limit 1', async function test() {
+      const { store } = this.context;
+      const records = await fillStore(100, store);
+      const result = await store.getLastActivities(0, 1);
+
+      expect(result[0]).to.deep.equal(records.pop());
+    });
+    it('should return empty array if offset is higher than count of records', async function test() {
+      const { store } = this.context;
+      await fillStore(1000, store);
+      const result = await store.getLastActivities(10000, 1);
+      expect(result).to.be.empty;
+    });
+  });
+}
+
 function basicSuite(storeCreator, cleanup) {
   describe('#basic suite', () => {
     store(storeCreator, cleanup);
@@ -417,6 +477,7 @@ function basicSuite(storeCreator, cleanup) {
     getStatusSignature(storeCreator, cleanup);
     getStatus(storeCreator, cleanup);
     getLastN(storeCreator, cleanup);
+    getLastActivities(storeCreator, cleanup);
   });
 }
 

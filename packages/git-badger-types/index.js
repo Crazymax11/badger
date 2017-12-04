@@ -48,10 +48,11 @@ export interface Store {
   getLast(project: Project, subject: Subject): Promise<StoreReturn>;
   getStatus(?Project, ?Subject): Promise<StoreStatus>;
   getLastN(
-    counet: number,
+    count: number,
     project: Project,
     subject: Subject
   ): Promise<HistoryRecord[]>;
+  getLastActivities(number, number): Promise<HistoryRecord[]>;
 }
 
 type Color =

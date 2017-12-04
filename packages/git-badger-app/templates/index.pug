@@ -1,92 +1,58 @@
 html
     head
-        meta(charset="utf-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1")
-        link(
-            rel="stylesheet" 
-            type="text/css" 
-            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css"
-        )
-        link(href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet")
+        include head.pug
     body.is-size-5
+        nav.navbar.is-fixed-top
+            div.navbar-brand GitBadger
+            div.navbar-menu
+                a.navbar-item(href="/about") About
+                a.navbar-item 1
+                a.navbar-item 1
         div.section
-            div.level
-                h1.title.level-item.is-1 Git badger
-            div.content
-                p
-                    span Git badger is a tool which allow you to show badges in your project. Git badger provides a simple API to store status of repo and to get last status as a badge. These badges built via &nbsp;
-                    a(href="https://shields.io/") shields.io
-                h4.subtitle.is-4 Why even do you need badges
-                    ul
-                        li You want to see actual status of your repo 
-                        li It's beautilfull. Your readme will be more than just text
-                        li People see badges and make picture of your project
-                h4.subtitle.is-4 Use git badger instead of existing services
-                    ul
-                        li You can't use existing services (private repo or imcompatible techs)
-                        li You need specific badges for specific status
-                h4.subtitle.is-4 Simple steps to make your project better:
-                    ul
-                        li
-                            span.icon
-                                i.em.em-triangular_ruler 
-                            span &nbsp;decide which badges you want to track
-                        li 
-                            span.icon
-                                i.em.em-ambulance
-                            span &nbsp;find a way to get current status of project (it must be really simple in 90% of cases)
-                        li
-                            span.icon
-                                i.em.em-rocket
-                            span &nbsp;store current status to git badger instance in your CI pipeline
-                        li
-                            span.icon
-                                i.em.em-memo
-                            span &nbsp;show badge in project README.md 
-                        li
-                            span.icon
-                                i.em.em---1
-                            span &nbsp;you are awesome! Stay that way
-                h4.subtitle.is-4 Available API
-                    table
-                        thead
-                            tr
-                                th Method
-                                th Url
-                                th Description
-                        tbody
-                            tr
-                                th POST
-                                th /badges/:badge/:project
-                                th with body {status: 'some status'} creates a new record to your project about current status of badge.
-                            tr
-                                th GET
-                                th /badges/:badge/:project 
-                                th redirects to https://shields.io svg badge with last badge status for your project
-                            tr
-                                th GET
-                                th /badges/:project
-                                th shows all badges for project
-                            tr
-                                th GET
-                                th /badges/:badge/history/:project
-                                th shows badge history for project
-                            tr
-                                th GET
-                                th /status
-                                th returns status of application and status of store.
-                            tr
-                                th GET
-                                th /status/:badge/:project
-                                th returns store status for given badge and project
-                            tr
-                                th GET
-                                th /status/:badge
-                                th returns store status for given badge
-                            tr
-                                th GET
-                                th /status/projects/:project
-                                th returns store status for given project
+            badge-shield(badge="eslint-errors")
+            badge-shield(badge="eslint-errors" status="123")
+            badge-shield(badge="eslint-errors" status="0")
+            last-activities
+            h4.subtitle.is-4 Available API
+                table.table
+                    thead
+                        tr
+                            th Method
+                            th Url
+                            th Description
+                    tbody
+                        tr
+                            th POST
+                            th /badges/:badge/:project
+                            th with body {status: 'some status'} creates a new record to your project about current status of badge.
+                        tr
+                            th GET
+                            th /badges/:badge/:project 
+                            th redirects to https://shields.io svg badge with last badge status for your project
+                        tr
+                            th GET
+                            th /badges/:project
+                            th shows all badges for project
+                        tr
+                            th GET
+                            th /badges/:badge/history/:project
+                            th shows badge history for project
+                        tr
+                            th GET
+                            th /status
+                            th returns status of application and status of store.
+                        tr
+                            th GET
+                            th /status/:badge/:project
+                            th returns store status for given badge and project
+                        tr
+                            th GET
+                            th /status/:badge
+                            th returns store status for given badge
+                        tr
+                            th GET
+                            th /status/projects/:project
+                            th returns store status for given project
         section.section
             div.level
                 h3.title.is-3.level-item Available badges
@@ -158,3 +124,6 @@ html
                     console.log('GET', project, badge);
                     document.querySelector('#get img').src = `/badges/${badge}/${project}`;
                 });
+        footer.footer
+            div.container
+                span github

@@ -1,0 +1,30 @@
+html
+    head
+        include head.pug
+    body.is-size-5
+        nav.navbar.is-fixed-top
+            div.navbar-brand GitBadger
+            div.navbar-menu
+                a.navbar-item(href="/about") About
+                a.navbar-item 1
+                a.navbar-item 1
+        div.section
+            h1 #{badge.name}
+            img(src=badge.image)
+            br
+            span.content #{badge.description}
+            br
+            div.level
+                table
+                    thead
+                        tr
+                            th status
+                            th badge
+                    tbody
+                        each example in badge.examples
+                            tr
+                                td
+                                    span #{example}
+                                td
+                                    badge-shield(badge=badge.name, status=example)
+            test-badge-form(badge=badge.name)

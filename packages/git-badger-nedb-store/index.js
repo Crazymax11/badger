@@ -10,11 +10,11 @@ import type {
   Status,
   StoreStatus,
   HistoryRecord
-} from 'git-badger-types';
+} from '@git-badger/types';
 
 class NeDBStore implements Store {
   db: any;
-  constructor({path}: {path: ?string}) {
+  constructor({ path }: { path: ?string } = {}) {
     if (path) {
       this.db = new DataStore({
         filename: path,
@@ -205,6 +205,45 @@ class NeDBStore implements Store {
       projects: projectsSet.size,
       status: 'ok'
     };
+  }
+
+  async getLastActivities(
+    offset: number,
+    limit: number
+  ): Promise<HistoryRecord[]> {
+    if (!Number.isInteger(offset)) {
+      throw new Error('offset must be an integer');
+    }
+
+    if (!Number.isInteger(limit)) {
+      throw new Error('limi must be an integer');
+    }
+
+    if (offset < 0) {
+      throw new Error('offset must be higher or equal zero');
+    }
+
+    if (limit < 1) {
+      throw new Error('limit must be a positive integer');
+    } else if (limit > 100) {
+      throw new Error('limit must be below 100');
+    }
+
+    const records = await new Promise((resolve, reject) =>
+      this.db
+        .find({})
+        .sort({ time: -1 })
+        .skip(offset)
+        .limit(limit)
+        .exec((err, docs) => (err ? reject(err) : resolve(docs)))
+    );
+
+    return records.map(record => ({
+      project: record.project,
+      status: record.status,
+      subject: record.subject,
+      time: record.time
+    }));
   }
 }
 

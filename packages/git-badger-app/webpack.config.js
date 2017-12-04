@@ -1,7 +1,7 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
-module.exports = {
+const nodeSide = {
   output: {
     filename: 'app.js',
     path: path.resolve('dist')
@@ -21,3 +21,24 @@ module.exports = {
     ]
   }
 };
+
+const web = {
+  output: {
+    filename: 'web.js',
+    path: path.resolve('dist')
+  },
+  entry: {
+    web: path.resolve('web/app.js')
+  },
+  module: {
+    rules: [
+      {
+        test: /vue$/,
+        exclude: /node_modules/,
+        loader: 'vue-loader'
+      }
+    ]
+  }
+};
+
+module.exports = [web];
