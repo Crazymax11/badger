@@ -27,11 +27,11 @@ jobs:
           - v1-dependencies-
 
       - run: 
-        command: |
-          yarn install
-          yarn global add lerna
-          lerna bootstrap
-          lerna run build
+          command: |
+            yarn install
+            yarn global add lerna
+            lerna bootstrap
+            lerna run build
 
       - save_cache:
           paths:
