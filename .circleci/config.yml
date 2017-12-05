@@ -31,11 +31,13 @@ jobs:
             yarn install
             ./node_modules/.bin/lerna bootstrap
             ./node_modules/.bin/lerna run build
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /v\.\d+\.\d+\.\d+/
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
-      - run: yarn test

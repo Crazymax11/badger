@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/nedb-store",
-  "version": "0.12.7",
+  "version": "0.13.1",
   "description": "nedb",
   "main": "dist/index.js",
   "keywords": [
@@ -20,8 +20,8 @@
     "nedb": "^1.8.0"
   },
   "devDependencies": {
-    "@git-badger/store-tests": "^0.12.7",
-    "@git-badger/types": "^0.12.7",
+    "@git-badger/store-tests": "^0.13.1",
+    "@git-badger/types": "^0.13.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",

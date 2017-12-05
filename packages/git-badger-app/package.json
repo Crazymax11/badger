@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/app",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,12 +16,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@git-badger/eslint-errors-badge": "^0.12.7",
+    "@git-badger/eslint-errors-badge": "^0.13.1",
     "@git-badger/eslint-warnings-badge": "^0.12.7",
     "@git-badger/flow-coverage-badge": "^0.12.7",
-    "@git-badger/nedb-store": "^0.12.7",
-    "@git-badger/server": "^0.13.0",
-    "@git-badger/test-coverage-badge": "^0.12.7",
+    "@git-badger/nedb-store": "^0.13.1",
+    "@git-badger/server": "^0.13.1",
+    "@git-badger/test-coverage-badge": "^0.13.1",
     "@git-badger/vue-component-decorator-badge": "^0.12.7",
     "command-line-args": "^4.0.7",
     "command-line-usage": "^4.0.1",
