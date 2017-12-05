@@ -26,7 +26,11 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: 
+        - yarn install
+        - yarn global add lerna
+        - lerna bootstrap
+        - lerna run build
 
       - save_cache:
           paths:
