@@ -29,9 +29,8 @@ jobs:
       - run: 
           command: |
             yarn install
-            yarn global add lerna
-            lerna bootstrap
-            lerna run build
+            ./node_modules/.bin/lerna bootstrap
+            ./node_modules/.bin/lerna run build
 
       - save_cache:
           paths:
