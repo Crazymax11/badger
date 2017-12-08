@@ -22,10 +22,10 @@ export default {
     },
     methods: {
         copyMD() {
-            this.$copyText(`![${this.badge}](${window.location.protocol}//${window.location.hostname}/badge/${this.badge}/status/${this.status})`)
+            this.$copyText(`![${this.badge}](${window.location.protocol}//${window.location.hostname}/badges/${this.badge}/status/${this.status})`)
         },
         copyHTML() {
-            this.$copyText(`<a target="_blank" href="${window.location.protocol}//${window.location.hostname}/badge/${this.badge}"><img src="${window.location.protocol}//${window.location.hostname}/badge/${this.badge}/status/${this.status}"></a>`);
+            this.$copyText(`<a target="_blank" href="${window.location.protocol}//${window.location.hostname}/badges/${this.badge}"><img src="${window.location.protocol}//${window.location.hostname}/badges/${this.badge}/status/${this.status}"></a>`);
         }
     }
 }

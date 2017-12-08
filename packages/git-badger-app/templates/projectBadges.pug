@@ -1,7 +1,6 @@
 html
     head
+        include head.pug
     body
         h1= project
-        each link in links
-            img(src=''+link)
-            br
+        project-current-status(project=project)

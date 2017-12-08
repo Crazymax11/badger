@@ -4,8 +4,10 @@ import ElementUI from 'element-ui';
 import VueClipboard from 'vue-clipboard2';
 import Badge from './components/simple-badge.vue';
 import BadgeShield from './components/badge-shield.vue';
+import ProjectShield from './components/project-shield.vue';
 import LastActivities from './components/last-activities.vue';
 import TestBadgeForm from './components/test-badge-form.vue';
+import ProjectCurrentStatus from './components/project-current-status.vue';
 
 Vue.use(ElementUI);
 Vue.use(vueCustomElement);
@@ -14,3 +16,5 @@ Vue.customElement('simple-badge', Badge);
 Vue.customElement('badge-shield', BadgeShield);
 Vue.customElement('last-activities', LastActivities);
 Vue.customElement('test-badge-form', TestBadgeForm);
+Vue.customElement('project-shield', ProjectShield);
+Vue.customElement('project-current-status', ProjectCurrentStatus);

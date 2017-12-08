@@ -62,6 +62,19 @@ export default function createApp(
     return res.redirect(badge);
   });
 
+  app.get('/badges/:badgeType/projects/:project', async (req, res) => {
+    const badgeType = req.params.badgeType;
+    const project = req.params.project;
+    const lastValue = await store.getLast(project, badgeType);
+    const badgeHandler = badges[badgeType];
+    if (!badgeHandler) {
+      return res.status(400).send('wrong badge!');
+    }
+    const badgeData = badgeHandler.create(lastValue.status);
+    const badge = getLink(badgeData);
+    return res.redirect(badge);
+  });
+
   app.get('/badges/:badge/status/:status', async (req, res) => {
     const badgeType = req.params.badge;
     const status = req.params.status;
@@ -99,6 +112,15 @@ export default function createApp(
       }
     );
   });
+
+  app.get('/api/projects/:project/status', (req, res) => {
+    const project = req.params.project;
+    return store
+      .getProjectStatus(project)
+      .then(records => res.send(records))
+      .catch(err => res.status(500).send(err));
+  });
+
   app.get('/badges/:badgeType/history/:project', async (req, res) => {
     const project = req.params.project;
     const badgeType = req.params.badgeType;
@@ -127,6 +149,24 @@ export default function createApp(
   });
 
   app.post('/badges/:badgeType/:project', async (req, res) => {
+    const status = req.body.status;
+    const badgeType = req.params.badgeType;
+    const project = req.params.project;
+    if (typeof status === 'undefined') {
+      return res.status(400).send('cant get status from body');
+    }
+
+    const badgeHandler = badges[req.params.badgeType];
+    await store.store(project, badgeType, status, Date.now());
+    if (badgeHandler) {
+      const meta = badgeHandler.create(status);
+      const badge = getLink(meta);
+      return res.send(badge);
+    }
+    return res.status(400).json(Object.keys(badges));
+  });
+
+  app.post('/badges/:badgeType/projects/:project', async (req, res) => {
     const status = req.body.status;
     const badgeType = req.params.badgeType;
     const project = req.params.project;
