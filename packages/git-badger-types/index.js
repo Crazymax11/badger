@@ -53,6 +53,7 @@ export interface Store {
     subject: Subject
   ): Promise<HistoryRecord[]>;
   getLastActivities(number, number): Promise<HistoryRecord[]>;
+  getProjectStatus(project: Project): Promise<Array<HistoryRecord>>;
 }
 
 type Color =

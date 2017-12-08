@@ -245,6 +245,37 @@ class NeDBStore implements Store {
       time: record.time
     }));
   }
+
+  async getProjectStatus(project: Project): Promise<HistoryRecord[]> {
+    if (!project) {
+      throw new Error('Project is not provided');
+    }
+
+    if (typeof project !== 'string') {
+      throw new Error('Project must be a string');
+    }
+
+    // TODO: this is really shit method because it will work slow on large amount of records
+    const records = await new Promise((resolve, reject) =>
+      this.db
+        .find({ project })
+        .sort({ time: -1 })
+        .exec((err, docs) => (err ? reject(err) : resolve(docs)))
+    );
+
+    return records.reduce((arr, record) => {
+      if (!arr.some(item => item.subject === record.subject)) {
+        arr.push({
+          time: record.time,
+          project: record.project,
+          subject: record.subject,
+          status: record.status
+        });
+      }
+
+      return arr;
+    }, []);
+  }
 }
 
 export default NeDBStore;

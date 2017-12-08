@@ -470,6 +470,42 @@ function getLastActivities(storeCreator, cleanup) {
   });
 }
 
+function getProjectStatus(storeCreator, cleanup) {
+  describe('#getProjectStatus', () => {
+    beforeEach(function beforeHook() {
+      this.context = createStoreForTest(storeCreator, String(Date.now()));
+    });
+    afterEach(function afterHook() {
+      return cleanup(this.context.store);
+    });
+    it('should throw error if project is not provided', function test() {
+      const { store } = this.context;
+      return expect(store.getProjectStatus()).to.be.rejected;
+    });
+    it('should throw error if project is not a string', function test() {
+      const { store } = this.context;
+      return expect(store.getProjectStatus(0)).to.be.rejected;
+    });
+    it('should return empty array if no data for project', function test() {
+      const { store } = this.context;
+      return expect(store.getProjectStatus('test')).to.eventually.be.empty;
+    });
+    it('should return last records for project', async function test() {
+      const { store } = this.context;
+      let records = await fillStore(1000, store);
+      const project = records[0].project;
+      records = records.filter(r => r.project === project).reverse();
+      const lastStatuses = records.reduce((arr, record) => {
+        if (!arr.some(item => item.subject === record.subject)) {
+          arr.push(record);
+        }
+        return arr;
+      }, []);
+      expect(await store.getProjectStatus(project)).to.deep.equal(lastStatuses);
+    });
+  });
+}
+
 function basicSuite(storeCreator, cleanup) {
   describe('#basic suite', () => {
     store(storeCreator, cleanup);
@@ -478,6 +514,7 @@ function basicSuite(storeCreator, cleanup) {
     getStatus(storeCreator, cleanup);
     getLastN(storeCreator, cleanup);
     getLastActivities(storeCreator, cleanup);
+    getProjectStatus(storeCreator, cleanup);
   });
 }
 
