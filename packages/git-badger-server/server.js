@@ -121,6 +121,16 @@ export default function createApp(
       .catch(err => res.status(500).send(err));
   });
 
+  app.get('/projects', (req, res) => {
+    res.render('workInProgress', {}, (err, html) => {
+      if (err) {
+        console.error(err);
+        return res.send(err);
+      }
+      return res.send(html);
+    });
+  });
+
   app.get('/badges', (req, res) =>
     res.render('badges', {}, (err, html) => {
       if (err) {
