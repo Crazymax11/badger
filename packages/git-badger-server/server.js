@@ -140,6 +140,16 @@ export default function createApp(
       return res.send(html);
     })
   );
+
+  app.get('/about', (req, res) => {
+    res.render('about', {}, (err, html) => {
+      if (err) {
+        console.error(err);
+        return res.send(err);
+      }
+      return res.send(html);
+    });
+  });
   app.get('/api/badges', (req, res) => res.json(badges));
 
   app.get('/badges/:badgeType/history/:project', async (req, res) => {

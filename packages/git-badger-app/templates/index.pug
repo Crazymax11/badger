@@ -6,47 +6,6 @@ html
         h1 Git badger
         h2 Badges that you deserve!
         last-activities
-        div.section
-            h4.subtitle.is-4 Available API
-                table.table
-                    thead
-                        tr
-                            th Method
-                            th Url
-                            th Description
-                    tbody
-                        tr
-                            th POST
-                            th /badges/:badge/:project
-                            th with body {status: 'some status'} creates a new record to your project about current status of badge.
-                        tr
-                            th GET
-                            th /badges/:badge/:project 
-                            th redirects to https://shields.io svg badge with last badge status for your project
-                        tr
-                            th GET
-                            th /badges/:project
-                            th shows all badges for project
-                        tr
-                            th GET
-                            th /badges/:badge/history/:project
-                            th shows badge history for project
-                        tr
-                            th GET
-                            th /status
-                            th returns status of application and status of store.
-                        tr
-                            th GET
-                            th /status/:badge/:project
-                            th returns store status for given badge and project
-                        tr
-                            th GET
-                            th /status/:badge
-                            th returns store status for given badge
-                        tr
-                            th GET
-                            th /status/projects/:project
-                            th returns store status for given project
         badges-page
         get-badge-form
         post-badge-form

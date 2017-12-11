@@ -12,6 +12,7 @@ import GetBadgeForm from './components/get-badge-form.vue';
 import ProjectCurrentStatus from './components/project-current-status.vue';
 import NavHeader from './components/nav-header.vue';
 import BadgesPage from './components/badges-page.vue';
+import ApiReference from './components/api-reference.vue';
 
 Vue.use(ElementUI);
 Vue.use(vueCustomElement);
@@ -26,3 +27,4 @@ Vue.customElement('project-shield', ProjectShield);
 Vue.customElement('project-current-status', ProjectCurrentStatus);
 Vue.customElement('nav-header', NavHeader);
 Vue.customElement('badges-page', BadgesPage);
+Vue.customElement('api-reference', ApiReference);

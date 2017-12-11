@@ -1,30 +1,24 @@
 html
     head
-        meta(charset="utf-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1")
-        link(
-            rel="stylesheet" 
-            type="text/css" 
-            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css"
-        )
-        link(href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet")
-    body.is-size-5
-        div.level
-            h1.title.level-item.is-1 Git badger
-        div.content
+        include head.pug
+    body
+        nav-header
+        div
+            h1 Git badger
+        div
             p
                 span Git badger is a tool which allow you to show badges in your project. Git badger provides a simple API to store status of repo and to get last status as a badge. These badges built via &nbsp;
                 a(href="https://shields.io/") shields.io
-            h4.subtitle.is-4 Why even do you need badges
+            h4 Why even do you need badges
                 ul
                     li You want to see actual status of your repo 
                     li It's beautilfull. Your readme will be more than just text
                     li People see badges and make picture of your project
-            h4.subtitle.is-4 Use git badger instead of existing services
+            h4 Use git badger instead of existing services
                 ul
                     li You can't use existing services (private repo or imcompatible techs)
                     li You need specific badges for specific status
-            h4.subtitle.is-4 Simple steps to make your project better:
+            h4 Simple steps to make your project better:
                 ul
                     li
                         span.icon
@@ -46,3 +40,4 @@ html
                         span.icon
                             i.em.em---1
                         span &nbsp;you are awesome! Stay that way
+        api-reference
