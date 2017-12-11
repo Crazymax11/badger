@@ -1,9 +1,9 @@
 <template>
-    <el-container>
-        <el-header>
-            Last Activities
-        </el-header>
-        <el-main style="overflow: visible">
+    <el-card>
+        <div slot="header">
+            <h3> Last Activities </h3>
+        </div>
+        <div style="overflow: visible">
             <el-table
                 :data="tableData">
                 <el-table-column
@@ -45,8 +45,8 @@
                 :total="recordsCount"
                 @current-change="changeOffset">
             </el-pagination>
-        </el-main>
-    </el-container>
+        </div>
+    </el-card>
 </template>
 <style>
 </style>

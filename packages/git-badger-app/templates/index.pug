@@ -47,22 +47,7 @@ html
                             th GET
                             th /status/projects/:project
                             th returns store status for given project
-        section.section
-            div.level
-                h3.title.is-3.level-item Available badges
-
-            each badge in badges
-                section.container
-                    h3.subtitle.is-3 #{badge.name}
-                    div
-                        span.content #{badge.description}
-                        br
-                        div.level
-                            ul
-                                each example in badge.examples
-                                    - var link = getLink(badge.create(example))
-                                    li
-                                        img(src=''+link)
+        badges-page
         section.section
             h3.title.is-3 Test section
             span.content Here you can try out badges
