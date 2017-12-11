@@ -1,13 +1,8 @@
 html
     head
         include head.pug
-    body.is-size-5
-        nav.navbar.is-fixed-top
-            div.navbar-brand GitBadger
-            div.navbar-menu
-                a.navbar-item(href="/about") About
-                a.navbar-item 1
-                a.navbar-item 1
+    body
+        nav-header
         div.section
             h1 #{badge.name}
             img(src=badge.image)
