@@ -121,6 +121,17 @@ export default function createApp(
       .catch(err => res.status(500).send(err));
   });
 
+  app.get('/badges', (req, res) =>
+    res.render('badges', {}, (err, html) => {
+      if (err) {
+        console.error(err);
+        return res.send(err);
+      }
+      return res.send(html);
+    })
+  );
+  app.get('/api/badges', (req, res) => res.json(badges));
+
   app.get('/badges/:badgeType/history/:project', async (req, res) => {
     const project = req.params.project;
     const badgeType = req.params.badgeType;

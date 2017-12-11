@@ -2,17 +2,11 @@ html
     head
         include head.pug
     body.is-size-5
-        nav.navbar.is-fixed-top
-            div.navbar-brand GitBadger
-            div.navbar-menu
-                a.navbar-item(href="/about") About
-                a.navbar-item 1
-                a.navbar-item 1
+        nav-header
+        h1 Git badger
+        h2 Badges that you deserve!
+        last-activities
         div.section
-            badge-shield(badge="eslint-errors")
-            badge-shield(badge="eslint-errors" status="123")
-            badge-shield(badge="eslint-errors" status="0")
-            last-activities
             h4.subtitle.is-4 Available API
                 table.table
                     thead
