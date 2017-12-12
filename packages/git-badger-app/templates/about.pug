@@ -7,17 +7,23 @@ html
             h1 Git badger
         div
             p
-                span Git badger is a tool which allow you to show badges in your project. Git badger provides a simple API to store status of repo and to get last status as a badge. These badges built via &nbsp;
+                span Git badger makes your project better through badges. Badge is a simple shild like this 
+                badge-shield(badge="eslint-errors", status="10")
+                span . Such badges show an actual status of the project. 
+                span To make them alive git badger provides an api to store statuses and get actual badge. 
+                span Badges provided by 
                 a(href="https://shields.io/") shields.io
             h4 Why even do you need badges
                 ul
-                    li You want to see actual status of your repo 
-                    li It's beautilfull. Your readme will be more than just text
-                    li People see badges and make picture of your project
-            h4 Use git badger instead of existing services
+                    li You see actual status of a project.
+                    li Badges more informative than plain text or table.
+            h4 Use git badger instead of existing services:
                 ul
-                    li You can't use existing services (private repo or imcompatible techs)
-                    li You need specific badges for specific status
+                    li You can't use existing services (you have private repository or incompatible technology stack)
+                    li You need specific badges for specific purposes
+                    li You need flexible solution
+                    li You want to control badge provider (you can deploy git badge by yourself on your machine)
+                    li You want to track status history
             h4 Simple steps to make your project better:
                 ul
                     li
@@ -40,4 +46,22 @@ html
                         span.icon
                             i.em.em---1
                         span &nbsp;you are awesome! Stay that way
+            h4 Terminology
+                ul
+                    li
+                        span shield - prepared badge image, provided by shields.io 
+                        badge-shield(badge="eslint-errors", status="10")
+                    li
+                        span subject - left side text of shield. 
+                        i eslint-errors
+                    li
+                        span status - current status of badge subject, at right side of shield. 
+                        i 10
+                    li
+                        span badge - turn your project statuses to shields. 
+                        i eslint-errors 
+                        span badge that converts 
+                        i 10 
+                        span to 
+                        badge-shield(badge="eslint-errors", status="10")
         api-reference
