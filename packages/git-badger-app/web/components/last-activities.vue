@@ -60,14 +60,14 @@ export default {
         }
     },
     mounted() {
-        fetch('/activities/?offset=0&limit=10')
+        fetch('/api/activities/?offset=0&limit=10')
             .then(res => res.json())
             .then(records => {
                 records.forEach(record => record.time = (new Date(record.time).toLocaleString()));
                 return records;
             })
             .then(records => this.tableData = records)
-        fetch('/status')
+        fetch('/api/status')
             .then(res => res.json())
             .then(res => res.records)
             .then(records => {
@@ -77,7 +77,7 @@ export default {
     methods: {
         changeOffset(page) {
             this.offset = page * 10 - 10;
-            fetch(`/activities?offset=${this.offset}&limit=10`)
+            fetch(`/api/activities?offset=${this.offset}&limit=10`)
                 .then(res => res.json())
                 .then(records => {
                     records.forEach(record => record.time = (new Date(record.time).toLocaleString()));

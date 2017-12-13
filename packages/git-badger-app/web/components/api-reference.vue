@@ -14,47 +14,68 @@ export default {
       return {
           tableData: [
             {
-                method:  'POST',
-                url: '/badges/:badge/:project',
-                description: 'with body {status: \'some status\'} creates a new record to your project about current status of badge.'
-            },
-            {
                 method:  'GET',
-                url: '/badges/:badge/:project ',
+                url: '/api/badges/:name/projects/:project ',
                 description: 'redirects to https://shields.io svg badge with last badge status for your project'
             },
             {
-                method:  'GET',
-                url: '/badges/:project',
-                description: 'shows all badges for project'
+                method:  'POST',
+                url: '/api/badges/:name/projects/:project',
+                description: 'with body {status: \'some status\'} creates a new record to your project about current status of badge.'
+            },
+            {
+                method: 'GET',
+                url: '/api/badges',
+                description: 'returns all available badges'
+            },
+            {
+                method: 'GET',
+                url: '/api/badges/:name',
+                description: 'returns badge info'
+            },
+            {
+                method: 'GET',
+                url: '/api/badges/:name/image',
+                description: 'returns badge image'
+            },
+            {
+                method: 'GET',
+                url: '/api/badges/:name/status/:status',
+                description: 'redirects to https://shields.io to corresponing shield'
+            },
+            {
+                method: 'GET',
+                url: '/api/projects/:project/status',
+                description: 'returns actual badge statuses for project'
+            },
+            {
+                method: 'GET',
+                url: '/api/activities?offset=0&limit=100',
+                description: 'return a list of last stored statuses with specified offset and limit'
             },
             {
                 method:  'GET',
-                url: '/badges/:badge/history/:project',
-                description: 'shows badge history for project'
-            },
-            {
-                method:  'GET',
-                url: '/status',
+                url: '/api/status',
                 description: 'returns status of application and status of store.'
             },
             {
                 method:  'GET',
-                url: '/status/:badge/:project',
+                url: '/api/status/:badge/:project',
                 description: 'returns store status for given badge and project'
             },
             {
                 method:  'GET',
-                url: '/status/:badge',
+                url: '/api/status/:badge',
                 description: 'returns store status for given badge'
             },
             {
                 method:  'GET',
-                url: '/status/projects/:project',
+                url: '/api/status/projects/:project',
                 description: 'returns store status for given project'
             }
           ]
       }
   }
 }
+
 </script>

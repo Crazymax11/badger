@@ -23,13 +23,13 @@ export default {
     },
     watch: {
         name(newName) {
-            fetch('/badges/' + newName + '/image')
+            fetch('/api/badges/' + newName + '/image')
                 .then(res => res.text())
                 .then(image => this.image = image);
         }
     },
     mounted() {
-        fetch('/badges/' + this.name + '/image')
+        fetch('/api/badges/' + this.name + '/image')
                 .then(res => res.text())
                 .then(image => this.image = image);
     }

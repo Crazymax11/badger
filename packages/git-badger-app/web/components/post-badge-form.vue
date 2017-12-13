@@ -34,7 +34,7 @@ export default {
     methods: {
         post() {
             this.loading = true;
-            fetch(`/badges/${this.subject}/${this.project}`, {
+            fetch(`/api/badges/${this.subject}/${this.project}`, {
                 method: 'post',
                 headers: {
                     "Content-type": "application/json"

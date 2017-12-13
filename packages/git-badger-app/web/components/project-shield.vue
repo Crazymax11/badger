@@ -15,7 +15,7 @@ export default {
     },
     computed: {
         shieldslink() {
-            return '/badges/' + this.badge + '/projects/' + this.project
+            return '/api/badges/' + this.badge + '/projects/' + this.project
         }
     }
 }

@@ -4,6 +4,8 @@ const cmdArgs = require('command-line-args');
 const cmdUsage = require('command-line-usage');
 const requireFallback = require('node-require-fallback');
 const server = require('@git-badger/server').default;
+const express = require('express');
+const getLink = require('shields-io-link');
 
 const defaultOptions = {
   badges: [
@@ -104,12 +106,107 @@ const targetOptions = Object.assign(
   cliOptions
 );
 
-server(
-  targetOptions.port,
-  createStore(targetOptions.store),
-  readBadges(targetOptions.badges),
-  [targetOptions.templates, __dirname + '/templates']
+const badges = readBadges(targetOptions.badges);
+const store = createStore(targetOptions.store);
+const app = server(targetOptions.port, store, badges);
+
+app.set('view engine', 'pug');
+app.set('views', [targetOptions.templates, `${__dirname}/templates`]);
+app.use(express.static('dist'));
+
+app.get('/badges/:name', (req, res) => {
+  const name = req.params.name;
+  const badge = badges[name];
+  if (!badge) {
+    return res.redirect('/');
+  }
+  return res.render(
+    'badgePage',
+    {
+      badge
+    },
+    (err, html) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+      }
+      return res.send(html);
+    }
+  );
+});
+
+app.get('/projects/:project', async (req, res) => {
+  const project = req.params.project;
+  const links = await Promise.all(
+    Object.entries(badges).map(async ([badgeType, badgeHandler]) => {
+      const lastValue = await store.getLast(project, badgeType);
+      // $ExpectError flow thinks that value is mixed type
+      const badgeData = badgeHandler.create(lastValue.status);
+      return getLink(badgeData);
+    })
+  );
+  res.render(
+    'projectBadges',
+    {
+      project,
+      links
+    },
+    (err, html) => {
+      if (err) {
+        console.error(err);
+        return res.send(err);
+      }
+      return res.send(html);
+    }
+  );
+});
+
+app.get('/projects', (req, res) => {
+  res.render('workInProgress', {}, (err, html) => {
+    if (err) {
+      console.error(err);
+      return res.send(err);
+    }
+    return res.send(html);
+  });
+});
+
+app.get('/badges', (req, res) =>
+  res.render('badges', {}, (err, html) => {
+    if (err) {
+      console.error(err);
+      return res.send(err);
+    }
+    return res.send(html);
+  })
 );
+
+app.get('/about', (req, res) => {
+  res.render('about', {}, (err, html) => {
+    if (err) {
+      console.error(err);
+      return res.send(err);
+    }
+    return res.send(html);
+  });
+});
+
+app.get('/', (req, res) => {
+  res.render(
+    'index',
+    {
+      badges,
+      getLink
+    },
+    (err, html) => {
+      if (err) {
+        console.error(err);
+        return res.send(err);
+      }
+      return res.send(html);
+    }
+  );
+});
 
 function readConfig(configpath = defaultOptions.config) {
   try {
@@ -123,12 +220,16 @@ function readConfig(configpath = defaultOptions.config) {
 function readBadges(badges = defaultOptions.badges) {
   return badges.reduce((acc, badge) => {
     // trying to get badge creator by mask
-    const badgeCreator = requireFallback(`@git-badger/${badge}-badge`, `git-badger-${badge}-badge`, badge);
+    const badgeCreator = requireFallback(
+      `@git-badger/${badge}-badge`,
+      `git-badger-${badge}-badge`,
+      badge
+    );
     if (badgeCreator) {
       // If badge exported as es6 module
       acc[badge] = badgeCreator.default || badgeCreator;
     } else {
-      consle.warn(`[WARN] Cant require badge ${badge}`);
+      console.warn(`[WARN] Cant require badge ${badge}`);
     }
 
     return acc;
@@ -138,7 +239,11 @@ function readBadges(badges = defaultOptions.badges) {
 function createStore(storeConfig = defaultOptions.store) {
   let store = '';
   const { name: storeName, ...storeArgs } = storeConfig;
-  store = requireFallback(`@git-badger/${storeName}-store`, `git-badger-${storeName}-store`, storeName);
+  store = requireFallback(
+    `@git-badger/${storeName}-store`,
+    `git-badger-${storeName}-store`,
+    storeName
+  );
   if (!store) {
     throw new Error(`Cant require store ${store}`);
   }
