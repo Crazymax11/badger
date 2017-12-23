@@ -1,0 +1,13 @@
+{
+    "name": "git-badger-components-count-badge",
+    "version": "1.0.0",
+    "description": "Show count of components in your project",
+    "main": "index.js",
+    "keywords": [
+      "git-badger-badge"
+    ],
+    "devDependencies": {},
+    "author": "",
+    "license": "ISC"
+  }
+  
