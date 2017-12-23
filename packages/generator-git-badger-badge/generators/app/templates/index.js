@@ -1,6 +1,6 @@
 const creator = {
   /**
-   * Humad readable badge name
+   * Human readable badge name
    */
   name: '<%= badgeName %>',
   /**
