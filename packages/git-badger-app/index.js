@@ -113,6 +113,7 @@ const app = server(targetOptions.port, store, badges);
 app.set('view engine', 'pug');
 app.set('views', [targetOptions.templates, `${__dirname}/templates`]);
 app.use(express.static('dist'));
+app.use(express.static('logo'));
 
 app.get('/badges/:name', (req, res) => {
   const name = req.params.name;
