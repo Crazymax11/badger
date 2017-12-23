@@ -45,7 +45,12 @@ const creator = {
   /**
    * Human readable description of badge purpose
    */
-  description: '<%= badgeDescription %>'
+  description: '<%= badgeDescription %>',
+
+  /**
+   * Image link (may be base64) which will be used as badge logo at git badger pages
+   */
+  image: ''
 };
 
 module.exports = creator;
