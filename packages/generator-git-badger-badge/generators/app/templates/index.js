@@ -13,16 +13,15 @@ const creator = {
    * @return {string} badge.status - text on right side of badge
    */
   create(status) {
-    
     // it will be none if status is unknown (was not provided before but was asked for example)
     if (status === 'none') {
-        return {
-            color: 'lightgrey',
-            status: 'unknown',
-            subject: '<%= badgeName %>'
-        }
+      return {
+        color: 'lightgrey',
+        status: 'unknown',
+        subject: '<%= badgeName %>'
+      };
     }
-    
+
     // convert status to your type explicit
     const errors = Number(status);
     if (errors > 0) {
