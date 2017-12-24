@@ -1,7 +1,7 @@
 {
-  "name": "@git-badger/test-coverage-badge",
+  "name": "@git-badger/code-size-badge",
   "version": "0.14.1-0",
-  "description": "Shows test coverage of your project",
+  "description": "Show code size in bytes",
   "main": "index.js",
   "keywords": [
     "git-badger-badge"

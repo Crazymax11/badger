@@ -1,11 +1,11 @@
 {
-  "name": "@git-badger/files-count-badge",
+  "name": "@git-badger/project-size-badge",
   "version": "0.14.1-0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Badge to show count of files in your project",
+  "description": "Show project size in bytes",
   "main": "index.js",
   "keywords": [
     "git-badger-badge"

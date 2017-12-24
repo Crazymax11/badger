@@ -1,13 +1,15 @@
 {
-    "name": "git-badger-lines-of-code-badge",
-    "version": "1.0.0",
-    "description": "Show lines of code in your project",
-    "main": "index.js",
-    "keywords": [
-      "git-badger-badge"
-    ],
-    "devDependencies": {},
-    "author": "",
-    "license": "ISC"
-  }
-  
+  "name": "@git-badger/lines-of-code-badge",
+  "version": "0.14.1-0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Show lines of code in your project",
+  "main": "index.js",
+  "keywords": [
+    "git-badger-badge"
+  ],
+  "author": "",
+  "license": "ISC"
+}

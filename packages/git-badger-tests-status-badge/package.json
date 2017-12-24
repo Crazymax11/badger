@@ -1,11 +1,11 @@
 {
-  "name": "@git-badger/files-count-badge",
+  "name": "@git-badger/tests-status-badge",
   "version": "0.14.1-0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Badge to show count of files in your project",
+  "description": "Shows count of passed, failed and skipped tests in your project.",
   "main": "index.js",
   "keywords": [
     "git-badger-badge"

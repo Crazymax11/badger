@@ -1,11 +1,11 @@
 {
-  "name": "@git-badger/files-count-badge",
+  "name": "@git-badger/commits-badge",
   "version": "0.14.1-0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Badge to show count of files in your project",
+  "description": "Shows a commits count.",
   "main": "index.js",
   "keywords": [
     "git-badger-badge"

@@ -1,11 +1,11 @@
 {
-  "name": "@git-badger/files-count-badge",
+  "name": "@git-badger/css-size-badge",
   "version": "0.14.1-0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "Badge to show count of files in your project",
+  "description": "Shows your project css size in bytes. May be used neither for source code and for dist. ",
   "main": "index.js",
   "keywords": [
     "git-badger-badge"
