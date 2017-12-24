@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/css-size-badge",
-  "version": "0.14.1-0",
+  "version": "0.14.2-0",
   "private": false,
   "publishConfig": {
     "access": "public"

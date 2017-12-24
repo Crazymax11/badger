@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/leveldown-store",
-  "version": "0.14.1-0",
+  "version": "0.14.2-0",
   "description": "Leveldown store for git-badger",
   "main": "dist/app.js",
   "scripts": {
@@ -22,8 +22,8 @@
     "yaml": "^0.3.0"
   },
   "devDependencies": {
-    "@git-badger/store-tests": "^0.14.1-0",
-    "@git-badger/types": "^0.14.1-0",
+    "@git-badger/store-tests": "^0.14.2-0",
+    "@git-badger/types": "^0.14.2-0",
     "babel-eslint": "^8.0.1",
     "chai": "^4.1.2",
     "cross-env": "^5.1.1",

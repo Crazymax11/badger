@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/store-tests",
-  "version": "0.14.1-0",
+  "version": "0.14.2-0",
   "description": "Test for any git badger store",
   "main": "index.js",
   "scripts": {
