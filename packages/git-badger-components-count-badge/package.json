@@ -1,6 +1,6 @@
 {
   "name": "@git-badger/components-count-badge",
-  "version": "0.14.2-0",
+  "version": "0.14.2",
   "private": false,
   "publishConfig": {
     "access": "public"

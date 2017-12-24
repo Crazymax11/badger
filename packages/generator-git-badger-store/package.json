@@ -1,6 +1,6 @@
 {
   "name": "generator-git-badger-store",
-  "version": "0.14.2-0",
+  "version": "0.14.2",
   "description": "",
   "main": "index.js",
   "keywords": [
