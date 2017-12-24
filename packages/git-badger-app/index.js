@@ -13,7 +13,20 @@ const defaultOptions = {
     'eslint-warnings',
     'flow-coverage',
     'test-coverage',
-    'vue-component-decorator'
+    'vue-component-decorator',
+    'code-size',
+    'project-size',
+    'js-size',
+    'css-size',
+    'tests-status',
+    'commits',
+    'components-count',
+    'files-count',
+    'lines-of-code',
+    'version',
+    'npm-version',
+    'pull-requests',
+    'todos'
   ],
   store: {
     name: 'nedb',
