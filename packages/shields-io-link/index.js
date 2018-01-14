@@ -1,5 +1,5 @@
 function escape(str) {
-  return str
+  return String(str)
     .replace(/-/g, '--')
     .replace(/_/g, '__')
     .replace(/ /g, '_ ');
