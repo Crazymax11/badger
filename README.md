@@ -16,11 +16,15 @@ To store status you need to make post request to `/badges/project-name/subject-n
 
 ```json
 {
-    "color": "red", // one of
-    "status": "any text", // will be at right side of badge
-    "subject": "subject" // will be at left side of badge
+    "color": "red",
+    "status": "any text",
+    "subject": "subject"
 }
 ```
+
+* color must be one of brightgreen green yellowgreen yellow orange red lightgrey blue or hex format abcdef
+* status will be shown at right side of badge
+* subject will be shown at left side of badge
 
 Badger stores only one status per project/subject. Badger stores all statuses in-memory.
 
