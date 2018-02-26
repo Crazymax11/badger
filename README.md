@@ -52,6 +52,7 @@ Application is running on 8080 port
 # Developing
 
 To build: `GOOS=linux GOARCH=386 go build -o badger *.go`
+
 To docker:
 * Build `docker build -t msosnov/badger .`
 * Run `docker run -p 8080:8080 --rm msosnov/badger`
