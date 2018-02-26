@@ -55,3 +55,21 @@ To build: `GOOS=linux GOARCH=386 go build -o badger *.go`
 To docker:
 * Build `docker build -t msosnov/badger .`
 * Run `docker run -p 8080:8080 --rm msosnov/badger`
+
+
+# OMG WHY SO BIG HISTORY AND RELEASE COUNT!?
+
+It was big JavaScript first project before. It was a really hype train:
+* lerna mono-repo (about 30-40 packages I think)
+* flow types
+* tests
+* own npm namespace
+* Vuejs
+* WebComponents
+
+It was made as flexible solution, but it did not. Also there are some overengineering solutins such as:
+* Composable, configurable and autoresolable badge creators
+* Abstract store with few implementations (in-memory store, mysql store, nedb store)
+* Badges history per project/subject
+
+But in real life I don't need nothing of it. All I need is to show actual repository state at README.md. So all features I need is to get *last actual state of repository* as *bagde*. New badger do that and only that.
