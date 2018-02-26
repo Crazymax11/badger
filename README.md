@@ -44,6 +44,14 @@ To get actual badge for project/subject you need to make GET request to `/badges
 ### Curl example
 `curl http://localhost:8080/badges/project/subject`
 
-## Deploy
+## Docker
 
-TBD
+Docker image is published at Docker Hub as msosnov/badger.
+Application is running on 8080 port
+
+# Developing
+
+To build: `GOOS=linux GOARCH=386 go build -o badger *.go`
+To docker:
+* Build `docker build -t msosnov/badger .`
+* Run `docker run -p 8080:8080 --rm msosnov/badger`
