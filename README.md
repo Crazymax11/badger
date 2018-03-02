@@ -3,10 +3,12 @@
 
 ## Overview
 
-Badger is a simplest HTTP service that provides two simple features:
+Badger is a simplest HTTP service that provides few features:
 
 * You can store status of your application
 * You can get last provided application status as [shields.io badge](https://shields.io)
+* You can get list of badges for project
+* You can get json list of badge datas for project
 
 That's it!
 
@@ -44,6 +46,18 @@ To get actual badge for project/subject you need to make GET request to `/badges
 ### Curl example
 `curl http://localhost:8080/badges/project/subject`
 
+## Get project status page
+
+To look at status page just navigate to /badges/project
+
+## Get json list of badges for project
+
+To get actual list of badges for project you need to make GET request to `/badges/project/json`. Yep, you can't make subject with name `json`, it's reserved for json api. Sorry.
+
+### Curl example
+
+`curl http://localhost:8080/badges/project/json`
+
 ## Docker
 
 Docker image is published at Docker Hub as msosnov/badger.
@@ -56,7 +70,6 @@ To build: `GOOS=linux GOARCH=386 go build -o badger *.go`
 To docker:
 * Build `docker build -t msosnov/badger .`
 * Run `docker run -p 8080:8080 --rm msosnov/badger`
-
 
 # OMG WHY SO BIG HISTORY AND RELEASE COUNT!?
 
