@@ -13,7 +13,7 @@ import (
 
 func main() {
 	router := mux.NewRouter()
-	store := MakeStore()
+	store := NewStore()
 	router.HandleFunc("/badges/{project}/json", func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
 		project := makeProject(vars["project"])
@@ -89,14 +89,14 @@ func main() {
 			return
 		}
 
-		html := []string{"<html><body>"}
+		html := []string{"<html><body><table>"}
 
 		for subject, badge := range badges {
-			str := fmt.Sprintf("<p> subject: %s </p><img src=\"%s\"><br>", subject, badge.GetUrl())
+			str := fmt.Sprintf("<tr><td><img src=\"%s\"></td><td><span> subject: %s </span></td></tr>", badge.GetUrl(), subject)
 			html = append(html, str)
 		}
 
-		html = append(html, "</body></html>")
+		html = append(html, "</table></body></html>")
 		body := strings.Join(html, "")
 		w.Write([]byte(body))
 	}).Methods("GET")
