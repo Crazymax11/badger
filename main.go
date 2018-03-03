@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"sort"
 	"strings"
 
 	"github.com/gorilla/mux"
@@ -91,7 +92,14 @@ func main() {
 
 		html := []string{"<html><body><table>"}
 
-		for subject, badge := range badges {
+		var subjects []string
+		for k := range badges {
+			subjects = append(subjects, k)
+		}
+		sort.Strings(subjects)
+
+		for _, subject := range subjects {
+			badge := badges[subject]
 			str := fmt.Sprintf("<tr><td><img src=\"%s\"></td><td><span> subject: %s </span></td></tr>", badge.GetUrl(), subject)
 			html = append(html, str)
 		}
